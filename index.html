@@ -27,6 +27,15 @@
         <input type="text" ng-model="description" placeholder="Description">
         <button type="submit" ng-click="toggleShow()">post it!</button>
       </form>
+
+      <div ng-repeat = 'post in forms | filter:searchable'>
+        <p>
+          {{post.title}}
+          {{post.author}}
+          {{post.img_url}}
+          {{post.description}}
+        </p>
+      </div>
     </main>
 
 
