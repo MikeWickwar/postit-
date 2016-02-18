@@ -3,6 +3,7 @@
   <head>
     <meta charset="utf-8">
     <title>Reddit Clone</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="style.css" media="screen" title="no title" charset="utf-8">
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.5.0-rc.2/angular.js"></script>
     <script type="text/javascript" src="index.js"></script>
@@ -35,8 +36,14 @@
           <img src={{post.img_url}} alt="" class="img"/>
           <h2>{{post.title}}</h2>
             <p class="votes">
-              {{post.votes.up}}
-              {{post.votes.down}}
+              <a ng-click="upVote()">
+                <i class="fa fa-arrow-up"></i>
+                {{post.votes.up}}
+              </a>
+              <a ng-click="downVote()">
+                <i class="fa fa-arrow-down"></i>
+                {{post.votes.down}}
+              </a>
             </p>
           <h4>{{post.author}}</h4>
           <p>
@@ -45,7 +52,6 @@
         </p>
       </div>
     </main>
-
 
   </body>
 </html>

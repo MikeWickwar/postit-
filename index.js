@@ -10,6 +10,17 @@ app.controller('MyController', function ($scope) {
     $scope.showMe = !$scope.showMe
     console.log($scope.showMe);
   }
+  $scope.upVote = function () {
+    console.log('here');
+    console.log($scope.upvotes);
+    $scope.upvotes = $scope.upvotes + 1
+  }
+  $scope.downVote = function () {
+    console.log('here');
+    console.log($scope.downvotes);
+    $scope.downvotes = $scope.downvotes + 1
+  }
+
 
   $scope.submitForm= function () {
     var form = {}
