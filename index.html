@@ -34,6 +34,10 @@
         <p>
           <img src={{post.img_url}} alt="" class="img"/>
           <h2>{{post.title}}</h2>
+            <p class="votes">
+              {{post.votes.up}}
+              {{post.votes.down}}
+            </p>
           <h4>{{post.author}}</h4>
           <p>
             {{post.description}}

@@ -22,7 +22,6 @@ app.controller('MyController', function ($scope) {
       down : $scope.downvotes
     }
 
-
     $scope.forms.push(form);
 
     console.log($scope.forms);
