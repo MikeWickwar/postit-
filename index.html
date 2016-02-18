@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html ng-app="mike">
+  <head>
+    <meta charset="utf-8">
+    <title>Reddit Clone</title>
+    <link rel="stylesheet" href="style.css" media="screen" title="no title" charset="utf-8">
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.5.0-rc.2/angular.js"></script>
+    <script type="text/javascript" src="index.js"></script>
+  </head>
+  <body>
+    <header class="header">
+        <h3>Reddit Clone</h3>
+        <button type="button" ng-click="toggleShow()">Submit Post</button>
+        <input type="text" ng-model="searchable">
+        <select class="sort" name="sort">
+          <option>Sort By</option>
+          <option>Sort By</option>
+          <option>Sort By</option>
+        </select>
+    </header>
+
+    <body ng-controller='MyController'>
+      <form name='form' ng-show='showMe' class="ng-hide" ng-submit="getContractor()">
+        <input type="text" ng-model="name" placeholder="Name">
+        <input type="text" ng-model="rate" placeholder="Rate">
+        <button type="submit" ng-click="toggleShow()">Add this contractor</button>
+      </form>
+
+
+  </body>
+</html>
