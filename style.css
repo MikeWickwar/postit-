@@ -1,14 +1,28 @@
+main{
+  display: flex;
+  justify-content: center;
+}
+body{
+  display:flex;
+  flex-direction: column;
+  padding: 0;
+}
 .header{
-  background: lightgreen;
+  background: #f8f8f8;
+  display:flex;
+  padding: 1%;
 }
 .img{
   height: 180px;
   width: 300px;
 }
-.post{
-  background-color: red;
+.postdiv{
+  display: flex;
+  background: #f8f8f8;
+  border: 1px solid black;
+  padding: 5px;
+
 }
 .errMsg{
   color: red;
-
 }
