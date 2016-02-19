@@ -1,4 +1,4 @@
-var app = angular.module('mike', []);
+var app = angular.module('mike', ['angularMoment']);
 
 app.controller('MyController', function ($scope) {
   $scope.forms = [];
@@ -8,7 +8,7 @@ app.controller('MyController', function ($scope) {
   $scope.sorter = '-votes.up';
   var vm = this;
   vm.time = new Date()
-  
+
 
 
   $scope.toggleShow = function () {
