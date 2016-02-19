@@ -30,31 +30,33 @@
         <h1>here {{sorter}} {{main.time | amCalendar}}</h1>
     </header>
 
-    <main>
-      <form name='newPostForm' ng-show='showMe' class="ng-hide" ng-submit="submitForm()">
-        <input type="text" name="title" ng-model="title" placeholder="Title" ng-maxlength="15" required>
-          <div ng-messages="newPostForm.title.$error">
-            <div class="errMsg" ng-message="required">*</div>
-            <div class="errMsg" ng-message="maxlength">Message must not exceed 15 characters</div>
-          </div>
-        <input type="text" name="author" ng-model="author" placeholder="Author" ng-maxlength="30" required>
-          <div ng-messages="newPostForm.author.$error">
-            <div class="errMsg" ng-message="required">*</div>
-            <div class="errMsg" ng-message="maxlength">Message must not exceed 30 characters</div>
-          </div>
-        <input type="text" name="img_url" ng-model="img_url" placeholder="Imgage url" ng-maxlength="40" required>
-          <div ng-messages="newPostForm.img_url.$error">
-            <div class="errMsg" ng-message="required">*</div>
-            <div class="errMsg" ng-message="maxlength">Message must not exceed 400 characters</div>
-          </div>
-        <input type="text" name="description" ng-model="description" placeholder="Description" ng-maxlength="500" required>
-          <div ng-messages="newPostForm.description.$error">
-            <div class="errMsg" ng-message="required">*</div>
-            <div class="errMsg" ng-message="maxlength">Description must not exceed 500 characters</div>
-          </div>
-        <button type="submit" ng-click="toggleShow()">post it!</button>
+      <form name='newPostForm' ng-show='showMe' class="ng-hide col-lg-10" ng-submit="submitForm()">
+        <div class="form-group">
+          <input class="form-control" type="text" name="title" ng-model="title" placeholder="Title" ng-maxlength="15" required>
+            <div ng-messages="newPostForm.title.$error">
+              <div class="errMsg" ng-message="required">*</div>
+              <div class="errMsg" ng-message="maxlength">Message must not exceed 15 characters</div>
+            </div>
+          <input class="form-control" type="text" name="author" ng-model="author" placeholder="Author" ng-maxlength="30" required>
+            <div ng-messages="newPostForm.author.$error">
+              <div class="errMsg" ng-message="required">*</div>
+              <div class="errMsg" ng-message="maxlength">Message must not exceed 30 characters</div>
+            </div>
+          <input class="form-control" type="text" name="img_url" ng-model="img_url" placeholder="Imgage url" ng-maxlength="40" required>
+            <div ng-messages="newPostForm.img_url.$error">
+              <div class="errMsg" ng-message="required">*</div>
+              <div class="errMsg" ng-message="maxlength">Message must not exceed 400 characters</div>
+            </div>
+          <input class="form-control" type="text" name="description" ng-model="description" placeholder="Description" ng-maxlength="500" required>
+            <div ng-messages="newPostForm.description.$error">
+              <div class="errMsg" ng-message="required">*</div>
+              <div class="errMsg" ng-message="maxlength">Description must not exceed 500 characters</div>
+            </div>
+          <button type="submit" ng-click="toggleShow()">post it!</button>
+        </div>
       </form>
 
+    <main>
       <div class="postdiv col-lg-10" ng-repeat = 'post in forms | filter:searchable | orderBy:sorter' >
         <p class="post">
           <img src={{post.img_url}} alt="" class="img"/>
