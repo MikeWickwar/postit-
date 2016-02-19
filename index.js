@@ -9,8 +9,6 @@ app.controller('MyController', function ($scope) {
   var vm = this;
   vm.time = new Date()
 
-
-
   $scope.toggleShow = function () {
     $scope.showMe = !$scope.showMe
     console.log($scope.soter);
