@@ -20,33 +20,40 @@
         <h3>Reddit Clone</h3>
         <button class="btn btn-default btn-sm" type="button" ng-click="toggleShow()"><i class="fa fa-plus"></i>Submit Post</button>
         <input class="searchbar" type="text" ng-model="searchable" placeholder="Search...">
-        <form name="sortForm">
-          <select class="sorter" name="sorter" ng-model="sorter">
-            <option ng-selected="true" value="votes">Votes</option>
-            <option value="time">Date</option>
-            <option value="title">Title</option>
-          </select>
-        </form>
-        <h1>here {{sorter}} {{main.time | amCalendar}}</h1>
+        <div class="sorter" uib-dropdown is-open="status.isopen">
+              <button id="single-button" type="button" class="btn btn-primary" uib-dropdown-toggle ng-disabled="disabled">
+                Sory by {{sorter.title}} <span class="caret"></span>
+              </button>
+              <ul uib-dropdown-menu role="menu" aria-labelledby="single-button">
+                <li role="menuitem"><a ng-click="sortby({value: 'votes', title: 'Votes' })" value="votes">Votes</a></li>
+                <li role="menuitem"><a ng-click="sortby({value: 'time', title: 'Time'})" value="time">Time</a></li>
+                <li role="menuitem"><a ng-click="sortby({value: 'title', title: 'Title'})" value="title">Title</a></li>
+              </ul>
+            </div>
+        <h1>here {{sorter.title}} {{main.time | amCalendar}}</h1>
     </header>
-
+    <mainform class="mainform">
       <form name='newPostForm' ng-show='showMe' class="ng-hide col-lg-10" ng-submit="submitForm()">
         <div class="form-group">
+          <h5>Title</h5>
           <input class="form-control" type="text" name="title" ng-model="title" placeholder="Title" ng-maxlength="15" required>
             <div ng-messages="newPostForm.title.$error">
               <div class="errMsg" ng-message="required">*</div>
               <div class="errMsg" ng-message="maxlength">Message must not exceed 15 characters</div>
             </div>
+          <h5>Author</h5>
           <input class="form-control" type="text" name="author" ng-model="author" placeholder="Author" ng-maxlength="30" required>
             <div ng-messages="newPostForm.author.$error">
               <div class="errMsg" ng-message="required">*</div>
               <div class="errMsg" ng-message="maxlength">Message must not exceed 30 characters</div>
             </div>
+          <h5>Image Url</h5>
           <input class="form-control" type="text" name="img_url" ng-model="img_url" placeholder="Imgage url" ng-maxlength="40" required>
             <div ng-messages="newPostForm.img_url.$error">
               <div class="errMsg" ng-message="required">*</div>
               <div class="errMsg" ng-message="maxlength">Message must not exceed 400 characters</div>
             </div>
+          <h5>Description</h5>
           <input class="form-control" type="text" name="description" ng-model="description" placeholder="Description" ng-maxlength="500" required>
             <div ng-messages="newPostForm.description.$error">
               <div class="errMsg" ng-message="required">*</div>
@@ -55,9 +62,9 @@
           <button type="submit" ng-click="toggleShow()">post it!</button>
         </div>
       </form>
-
-    <main>
-      <div class="postdiv col-lg-10" ng-repeat = 'post in forms | filter:searchable | orderBy:sorter' >
+    </mainform>
+    <main class="main">
+      <div class="postdiv col-lg-10" ng-repeat = 'post in forms | filter:searchable | orderBy:sorter.value' >
         <p class="post">
           <img src={{post.img_url}} alt="" class="img"/>
           <h2>{{post.title}}</h2>
@@ -89,18 +96,18 @@
             </div>
             <div class="">
               comment
-              <button type="button" ng-click="toggleCommentShow()">Write Comment</button>
-              <form name='main.newCommentForm' ng-show='showComment' class="ng-hide" ng-submit="submitCommentForm(post)">
+              <button type="button" ng-click="toggleCommentFormShow()">Write Comment</button>
+              <form name='main.newCommentForm' ng-show='showFormComment' class="ng-hide" ng-submit="submitCommentForm(post)">
                 <input type="text" name="commentAuthor" ng-model="commentAuthor" placeholder="Author" ng-maxlength="30" required>
-                <div ng-messages="main.newCommentForm.commentAuthor.$error">
-                  <div class="errMsg" ng-message="required">*</div>
-                  <div class="errMsg" ng-message="maxlength">Message must not exceed 30 characters</div>
-                </div>
+                  <div ng-messages="main.newCommentForm.commentAuthor.$error">
+                    <div class="errMsg" ng-message="required">*</div>
+                    <div class="errMsg" ng-message="maxlength">Message must not exceed 30 characters</div>
+                  </div>
                 <input type="text" name="comment" ng-model="comment" placeholder="comment" ng-maxlength="150" required>
-                <div ng-messages="main.newCommentForm.comment.$error">
-                  <div class="errMsg" ng-message="required">*</div>
-                  <div class="errMsg" ng-message="maxlength">Message must not exceed 150 characters</div>
-                </div>
+                  <div ng-messages="main.newCommentForm.comment.$error">
+                    <div class="errMsg" ng-message="required">*</div>
+                    <div class="errMsg" ng-message="maxlength">Message must not exceed 150 characters</div>
+                  </div>
                 <button type="submit" ng-click="toggleCommentShow()">post it!</button>
             </div>
           </p>

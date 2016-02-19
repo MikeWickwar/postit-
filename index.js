@@ -4,9 +4,11 @@ app.controller('MyController', function ($scope) {
   $scope.forms = [];
   $scope.showMe = false
   $scope.showComment = false
+  $scope.showFormComment = false
   $scope.upvotes = 0;
   $scope.downvotes = 0;
-  $scope.sorter = '-votes';
+  $scope.sorter = {value :'-votes',
+                   title : 'Votes'};
   var vm = this;
   vm.time = new Date()
 
@@ -16,11 +18,17 @@ app.controller('MyController', function ($scope) {
   $scope.toggleCommentShow = function () {
     $scope.showComment = !$scope.showComment
   }
+  $scope.toggleCommentFormShow = function () {
+    $scope.showFormComment = !$scope.showFormComment
+  }
   $scope.upVote = function (post) {
     post.votes = post.votes + 1
   }
   $scope.downVote = function (post) {
     post.votes = post.votes - 1
+  }
+  $scope.sortby = function (value) {
+    $scope.sorter = value;
   }
 
   $scope.submitForm= function () {
