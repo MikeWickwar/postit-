@@ -87,6 +87,13 @@
                   <div class="errMsg" ng-message="maxlength">Message must not exceed 15 characters</div>
                 </div>
                 <button type="submit" ng-click="toggleCommentShow()">post it!</button>
+            see comments
+            <div ng-repeat = 'comment in post.comments '>
+              <p>
+                {{comment.comment}}
+                {{comment.commentAuthor}}
+              </p>
+
           </p>
         </p>
       </div>

@@ -45,8 +45,6 @@ app.controller('MyController', function ($scope) {
   }
 
   $scope.submitCommentForm= function (post) {
-    // console.log($scope.main.newCommentForm.commentAuthor.$viewValue);
-    // console.log($scope.main.newCommentForm.comment.$viewValue);
     var newComment = {}
     newComment.commentAuthor = $scope.main.newCommentForm.commentAuthor.$viewValue;
     newComment.comment = $scope.main.newCommentForm.comment.$viewValue;
