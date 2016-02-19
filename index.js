@@ -1,4 +1,4 @@
-var app = angular.module('mike', ['angularMoment']);
+var app = angular.module('mike', ['angularMoment', 'ngMessages']);
 
 app.controller('MyController', function ($scope) {
   $scope.forms = [];

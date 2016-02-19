@@ -6,6 +6,7 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="style.css" media="screen" title="no title" charset="utf-8">
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.5.0-rc.2/angular.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/angular-messages/1.5.0/angular-messages.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.9.0/moment.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/angular-moment/1.0.0-beta.4/angular-moment.min.js"></script>
     <script type="text/javascript" src="index.js"></script>
@@ -27,11 +28,27 @@
     </header>
 
     <main>
-      <form name='form' ng-show='showMe' class="ng-hide" ng-submit="submitForm()">
-        <input type="text" ng-model="title" placeholder="Title">
-        <input type="text" ng-model="author" placeholder="Author">
-        <input type="text" ng-model="img_url" placeholder="Imgage url">
-        <input type="text" ng-model="description" placeholder="Description">
+      <form name='newPostForm' ng-show='showMe' class="ng-hide" ng-submit="submitForm()">
+        <input type="text" name="title" ng-model="title" placeholder="Title" ng-maxlength="15" required>
+          <div ng-messages="newPostForm.title.$error">
+            <div ng-message="required">*</div>
+            <div ng-message="maxlength">Message must not exceed 15 characters</div>
+          </div>
+        <input type="text" name="author" ng-model="author" placeholder="Author" ng-maxlength="30" required>
+          <div ng-messages="newPostForm.author.$error">
+            <div ng-message="required">*</div>
+            <div ng-message="maxlength">Message must not exceed 30 characters</div>
+          </div>
+        <input type="text" name="img_url" ng-model="img_url" placeholder="Imgage url" ng-maxlength="40" required>
+          <div ng-messages="newPostForm.img_url.$error">
+            <div ng-message="required">*</div>
+            <div ng-message="maxlength">Message must not exceed 400 characters</div>
+          </div>
+        <input type="text" name="description" ng-model="description" placeholder="Description" ng-maxlength="500" required>
+          <div ng-messages="newPostForm.description.$error">
+            <div ng-message="required">*</div>
+            <div ng-message="maxlength">Description must not exceed 500 characters</div>
+          </div>
         <button type="submit" ng-click="toggleShow()">post it!</button>
       </form>
 
