@@ -6,7 +6,7 @@ app.controller('MyController', function ($scope) {
   $scope.showComment = false
   $scope.upvotes = 0;
   $scope.downvotes = 0;
-  $scope.sorter = '-votes.up';
+  $scope.sorter = '-votes';
   var vm = this;
   vm.time = new Date()
 

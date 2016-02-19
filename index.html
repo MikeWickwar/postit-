@@ -19,7 +19,7 @@
         <form name="sortForm">
           <label for="sorter"> Sort By... </label>
           <select class="sorter" name="sorter" ng-model="sorter">
-            <option ng-selected="true" value="-votes.up">Votes</option>
+            <option ng-selected="true" value="votes">Votes</option>
             <option value="time">Date</option>
             <option value="title">Title</option>
           </select>
@@ -78,8 +78,8 @@
               <a ng-click="toggleCommentShow()">see comments</a>
               <div ng-repeat = 'comment in post.comments' ng-show='showComment'>
                 <p>
-                  {{comment.comment}}
-                  {{comment.commentAuthor}}
+                  Comment: {{comment.comment}}
+                  By: {{comment.commentAuthor}}
                 </p>
             </div>
             <div class="">
@@ -87,14 +87,14 @@
               <button type="button" ng-click="toggleCommentShow()">Write Comment</button>
               <form name='main.newCommentForm' ng-show='showComment' class="ng-hide" ng-submit="submitCommentForm(post)">
                 <input type="text" name="commentAuthor" ng-model="commentAuthor" placeholder="Author" ng-maxlength="30" required>
-                <div ng-messages="newCommentForm.commentAuthor.$error">
+                <div ng-messages="main.newCommentForm.commentAuthor.$error">
                   <div class="errMsg" ng-message="required">*</div>
                   <div class="errMsg" ng-message="maxlength">Message must not exceed 30 characters</div>
                 </div>
                 <input type="text" name="comment" ng-model="comment" placeholder="comment" ng-maxlength="150" required>
-                <div ng-messages="newCommentForm.comment.$error">
+                <div ng-messages="main.newCommentForm.comment.$error">
                   <div class="errMsg" ng-message="required">*</div>
-                  <div class="errMsg" ng-message="maxlength">Message must not exceed 15 characters</div>
+                  <div class="errMsg" ng-message="maxlength">Message must not exceed 150 characters</div>
                 </div>
                 <button type="submit" ng-click="toggleCommentShow()">post it!</button>
             </div>
