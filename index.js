@@ -37,11 +37,20 @@ app.controller('MyController', function ($scope) {
     form.votes = {
       up : 0,
       down : 0
-    }
+      }
+    form.comments = [];
     form.time = new Date()
 
     $scope.forms.push(form);
+  }
 
-    console.log($scope.forms);
+  $scope.submitCommentForm= function (post) {
+    // console.log($scope.main.newCommentForm.commentAuthor.$viewValue);
+    // console.log($scope.main.newCommentForm.comment.$viewValue);
+    var newComment = {}
+    newComment.commentAuthor = $scope.main.newCommentForm.commentAuthor.$viewValue;
+    newComment.comment = $scope.main.newCommentForm.comment.$viewValue;
+    post.comments.push(newComment)
+    console.log(post);
   }
 })

@@ -75,7 +75,7 @@
             <time am-time-ago="post.time" title="{{ post.time | amDateFormat: 'dddd, MMMM Do YYYY, h:mm a' }}"></time>
             comment
             <button type="button" ng-click="toggleCommentShow()">Write Comment</button>
-            <form name='newCommentForm' ng-show='showComment' class="ng-hide" ng-submit="submitCommentForm()">
+            <form name='main.newCommentForm' ng-show='showComment' class="ng-hide" ng-submit="submitCommentForm(post)">
               <input type="text" name="commentAuthor" ng-model="commentAuthor" placeholder="Author" ng-maxlength="30" required>
                 <div ng-messages="newCommentForm.commentAuthor.$error">
                   <div class="errMsg" ng-message="required">*</div>
