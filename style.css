@@ -9,11 +9,21 @@ body{
   flex-direction: column;
   padding: 0;
 }
+.btn{
+  color: black;
+  text-decoration: none;
+}
 .header{
   background: #f8f8f8;
   display:flex;
+  justify-content:flex-start;
+  align-items:center;
   padding: 1%;
-  height: 15vh;
+  height: 10vh;
+}
+.headspace{
+  margin-left: 5%;
+  color: #a9a9a9;
 }
 .img{
   height: 180px;
