@@ -10,15 +10,15 @@ app.controller('MyController', function ($scope) {
     $scope.showMe = !$scope.showMe
     console.log($scope.showMe);
   }
-  $scope.upVote = function () {
-    console.log('here');
-    console.log($scope.upvotes);
-    $scope.upvotes = $scope.upvotes + 1
+  $scope.upVote = function (post) {
+    console.log('up');
+    console.log(post.votes.up);
+    post.votes.up = post.votes.up + 1
   }
-  $scope.downVote = function () {
-    console.log('here');
-    console.log($scope.downvotes);
-    $scope.downvotes = $scope.downvotes + 1
+  $scope.downVote = function (post) {
+    console.log('down');
+    console.log(post.votes.down);
+    post.votes.down = post.votes.down + 1
   }
 
 

@@ -36,14 +36,14 @@
           <img src={{post.img_url}} alt="" class="img"/>
           <h2>{{post.title}}</h2>
             <p class="votes">
-              <a ng-click="upVote()">
+              <a ng-click="upVote(post)">
                 <i class="fa fa-arrow-up"></i>
                 {{post.votes.up}}
               </a>
-              <a ng-click="downVote()">
+              <a ng-click="downVote(post)">
                 <i class="fa fa-arrow-down"></i>
-                {{post.votes.down}}
               </a>
+              {{post.votes.down}}
             </p>
           <h4>{{post.author}}</h4>
           <p>
