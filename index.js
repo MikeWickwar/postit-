@@ -36,6 +36,7 @@ app.controller('MyController', function ($scope) {
       up : $scope.upvotes,
       down : $scope.downvotes
     }
+    form.time = new Date()
 
     $scope.forms.push(form);
 
