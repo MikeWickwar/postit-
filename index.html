@@ -31,23 +31,23 @@
       <form name='newPostForm' ng-show='showMe' class="ng-hide" ng-submit="submitForm()">
         <input type="text" name="title" ng-model="title" placeholder="Title" ng-maxlength="15" required>
           <div ng-messages="newPostForm.title.$error">
-            <div ng-message="required">*</div>
-            <div ng-message="maxlength">Message must not exceed 15 characters</div>
+            <div class="errMsg" ng-message="required">*</div>
+            <div class="errMsg" ng-message="maxlength">Message must not exceed 15 characters</div>
           </div>
         <input type="text" name="author" ng-model="author" placeholder="Author" ng-maxlength="30" required>
           <div ng-messages="newPostForm.author.$error">
-            <div ng-message="required">*</div>
-            <div ng-message="maxlength">Message must not exceed 30 characters</div>
+            <div class="errMsg" ng-message="required">*</div>
+            <div class="errMsg" ng-message="maxlength">Message must not exceed 30 characters</div>
           </div>
         <input type="text" name="img_url" ng-model="img_url" placeholder="Imgage url" ng-maxlength="40" required>
           <div ng-messages="newPostForm.img_url.$error">
-            <div ng-message="required">*</div>
-            <div ng-message="maxlength">Message must not exceed 400 characters</div>
+            <div class="errMsg" ng-message="required">*</div>
+            <div class="errMsg" ng-message="maxlength">Message must not exceed 400 characters</div>
           </div>
         <input type="text" name="description" ng-model="description" placeholder="Description" ng-maxlength="500" required>
           <div ng-messages="newPostForm.description.$error">
-            <div ng-message="required">*</div>
-            <div ng-message="maxlength">Description must not exceed 500 characters</div>
+            <div class="errMsg" ng-message="required">*</div>
+            <div class="errMsg" ng-message="maxlength">Description must not exceed 500 characters</div>
           </div>
         <button type="submit" ng-click="toggleShow()">post it!</button>
       </form>
@@ -73,6 +73,20 @@
           <p>
             posted at
             <time am-time-ago="post.time" title="{{ post.time | amDateFormat: 'dddd, MMMM Do YYYY, h:mm a' }}"></time>
+            comment
+            <button type="button" ng-click="toggleCommentShow()">Write Comment</button>
+            <form name='newCommentForm' ng-show='showComment' class="ng-hide" ng-submit="submitCommentForm()">
+              <input type="text" name="commentAuthor" ng-model="commentAuthor" placeholder="Author" ng-maxlength="30" required>
+                <div ng-messages="newCommentForm.commentAuthor.$error">
+                  <div class="errMsg" ng-message="required">*</div>
+                  <div class="errMsg" ng-message="maxlength">Message must not exceed 30 characters</div>
+                </div>
+              <input type="text" name="comment" ng-model="comment" placeholder="comment" ng-maxlength="150" required>
+                <div ng-messages="newCommentForm.comment.$error">
+                  <div class="errMsg" ng-message="required">*</div>
+                  <div class="errMsg" ng-message="maxlength">Message must not exceed 15 characters</div>
+                </div>
+                <button type="submit" ng-click="toggleCommentShow()">post it!</button>
           </p>
         </p>
       </div>

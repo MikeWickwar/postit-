@@ -3,6 +3,7 @@ var app = angular.module('mike', ['angularMoment', 'ngMessages']);
 app.controller('MyController', function ($scope) {
   $scope.forms = [];
   $scope.showMe = false
+  $scope.showComment = false
   $scope.upvotes = 0;
   $scope.downvotes = 0;
   $scope.sorter = '-votes.up';
@@ -12,6 +13,9 @@ app.controller('MyController', function ($scope) {
   $scope.toggleShow = function () {
     $scope.showMe = !$scope.showMe
     console.log($scope.soter);
+  }
+  $scope.toggleCommentShow = function () {
+    $scope.showComment = !$scope.showComment
   }
   $scope.upVote = function (post) {
     console.log('up');
