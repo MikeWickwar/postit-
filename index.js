@@ -1,4 +1,4 @@
-var app = angular.module('mike', ['angularMoment', 'ngMessages']);
+var app = angular.module('mike', ['angularMoment', 'ngMessages', 'ui.bootstrap']);
 
 app.controller('MyController', function ($scope) {
   $scope.forms = [];
@@ -12,19 +12,14 @@ app.controller('MyController', function ($scope) {
 
   $scope.toggleShow = function () {
     $scope.showMe = !$scope.showMe
-    console.log($scope.soter);
   }
   $scope.toggleCommentShow = function () {
     $scope.showComment = !$scope.showComment
   }
   $scope.upVote = function (post) {
-    console.log('up');
-    console.log(post.votes);
     post.votes = post.votes + 1
   }
   $scope.downVote = function (post) {
-    console.log('down');
-    console.log(post.votes);
     post.votes = post.votes - 1
   }
 
