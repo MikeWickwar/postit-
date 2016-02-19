@@ -31,8 +31,8 @@ app.controller('MyController', function ($scope) {
     form.img_url = $scope.img_url;
     form.description = $scope.description;
     form.votes = {
-      up : $scope.upvotes,
-      down : $scope.downvotes
+      up : 0,
+      down : 0
     }
     form.time = new Date()
 
