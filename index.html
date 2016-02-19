@@ -16,9 +16,9 @@
         <form name="sortForm">
           <label for="sorter"> Sort By... </label>
           <select class="sorter" name="sorter" ng-model="sorter">
-            <option ng-selected="true" value="votes">Votes</option>
-            <option value="date">Date</option>
-            <option value="title">Title</option>
+            <option ng-selected="true" value="-votes.up">Votes</option>
+            <option value="-date">Date</option>
+            <option value="-title">Title</option>
           </select>
         </form>
         <h1>here {{sorter}}</h1>
