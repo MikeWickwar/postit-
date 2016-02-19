@@ -71,29 +71,34 @@
             {{post.description}}
           </p>
           <p>
-            posted at
-            <time am-time-ago="post.time" title="{{ post.time | amDateFormat: 'dddd, MMMM Do YYYY, h:mm a' }}"></time>
-            comment
-            <button type="button" ng-click="toggleCommentShow()">Write Comment</button>
-            <form name='main.newCommentForm' ng-show='showComment' class="ng-hide" ng-submit="submitCommentForm(post)">
-              <input type="text" name="commentAuthor" ng-model="commentAuthor" placeholder="Author" ng-maxlength="30" required>
+            <div class="">
+              posted at
+              <time am-time-ago="post.time" title="{{ post.time | amDateFormat: 'dddd, MMMM Do YYYY, h:mm a' }}"></time>
+            </div>
+            <div class="">
+              <a ng-click="toggleCommentShow()">see comments</a>
+              <div ng-repeat = 'comment in post.comments' ng-show='showComment'>
+                <p>
+                  {{comment.comment}}
+                  {{comment.commentAuthor}}
+                </p>
+            </div>
+            <div class="">
+              comment
+              <button type="button" ng-click="toggleCommentShow()">Write Comment</button>
+              <form name='main.newCommentForm' ng-show='showComment' class="ng-hide" ng-submit="submitCommentForm(post)">
+                <input type="text" name="commentAuthor" ng-model="commentAuthor" placeholder="Author" ng-maxlength="30" required>
                 <div ng-messages="newCommentForm.commentAuthor.$error">
                   <div class="errMsg" ng-message="required">*</div>
                   <div class="errMsg" ng-message="maxlength">Message must not exceed 30 characters</div>
                 </div>
-              <input type="text" name="comment" ng-model="comment" placeholder="comment" ng-maxlength="150" required>
+                <input type="text" name="comment" ng-model="comment" placeholder="comment" ng-maxlength="150" required>
                 <div ng-messages="newCommentForm.comment.$error">
                   <div class="errMsg" ng-message="required">*</div>
                   <div class="errMsg" ng-message="maxlength">Message must not exceed 15 characters</div>
                 </div>
                 <button type="submit" ng-click="toggleCommentShow()">post it!</button>
-            see comments
-            <div ng-repeat = 'comment in post.comments '>
-              <p>
-                {{comment.comment}}
-                {{comment.commentAuthor}}
-              </p>
-
+            </div>
           </p>
         </p>
       </div>

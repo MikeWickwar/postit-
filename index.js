@@ -42,6 +42,11 @@ app.controller('MyController', function ($scope) {
     form.time = new Date()
 
     $scope.forms.push(form);
+
+    $scope.title = null;
+    $scope.author = null;
+    $scope.img_url = null;
+    $scope.description = null;
   }
 
   $scope.submitCommentForm= function (post) {
@@ -49,6 +54,8 @@ app.controller('MyController', function ($scope) {
     newComment.commentAuthor = $scope.main.newCommentForm.commentAuthor.$viewValue;
     newComment.comment = $scope.main.newCommentForm.comment.$viewValue;
     post.comments.push(newComment)
-    console.log(post);
+    // $scope.main.newCommentForm.comment.$rawModelValue = null;
+    // $scope.main.newCommentForm.commentAuthor.$rawModelValue = null;
+    console.log($scope.main.newCommentForm.comment);
   }
 })
