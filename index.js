@@ -19,13 +19,13 @@ app.controller('MyController', function ($scope) {
   }
   $scope.upVote = function (post) {
     console.log('up');
-    console.log(post.votes.up);
-    post.votes.up = post.votes.up + 1
+    console.log(post.votes);
+    post.votes = post.votes + 1
   }
   $scope.downVote = function (post) {
     console.log('down');
-    console.log(post.votes.down);
-    post.votes.down = post.votes.down + 1
+    console.log(post.votes);
+    post.votes = post.votes - 1
   }
 
   $scope.submitForm= function () {
@@ -34,10 +34,7 @@ app.controller('MyController', function ($scope) {
     form.author = $scope.author;
     form.img_url = $scope.img_url;
     form.description = $scope.description;
-    form.votes = {
-      up : 0,
-      down : 0
-      }
+    form.votes = 0;
     form.comments = [];
     form.time = new Date()
 
@@ -56,6 +53,6 @@ app.controller('MyController', function ($scope) {
     post.comments.push(newComment)
     // $scope.main.newCommentForm.comment.$rawModelValue = null;
     // $scope.main.newCommentForm.commentAuthor.$rawModelValue = null;
-    console.log($scope.main.newCommentForm.comment);
+    console.log($scope);
   }
 })
