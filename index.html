@@ -13,11 +13,15 @@
         <h3>Reddit Clone</h3>
         <button type="button" ng-click="toggleShow()">Submit Post</button>
         <input type="text" ng-model="searchable">
-        <select class="sort" name="sort">
-          <option>Sort By</option>
-          <option>Sort By</option>
-          <option>Sort By</option>
-        </select>
+        <form name="sortForm">
+          <label for="sorter"> Sort By... </label>
+          <select class="sorter" name="sorter" ng-model="sorter">
+            <option ng-selected="true" value="votes">Votes</option>
+            <option value="date">Date</option>
+            <option value="title">Title</option>
+          </select>
+        </form>
+        <h1>here {{sorter}}</h1>
     </header>
 
     <main>
@@ -31,8 +35,8 @@
         <button type="submit" ng-click="toggleShow()">post it!</button>
       </form>
 
-      <div ng-repeat = 'post in forms | filter:searchable'>
-        <p>
+      <div ng-repeat = 'post in forms | filter:searchable | orderBy:sorter'>
+        <p class="post">
           <img src={{post.img_url}} alt="" class="img"/>
           <h2>{{post.title}}</h2>
             <p class="votes">

@@ -6,9 +6,12 @@ app.controller('MyController', function ($scope) {
   $scope.showMe = false
   $scope.upvotes = 0;
   $scope.downvotes = 0;
+  $scope.sorter = null;
+
+
   $scope.toggleShow = function () {
     $scope.showMe = !$scope.showMe
-    console.log($scope.showMe);
+    console.log($scope.soter);
   }
   $scope.upVote = function (post) {
     console.log('up');
@@ -20,7 +23,6 @@ app.controller('MyController', function ($scope) {
     console.log(post.votes.down);
     post.votes.down = post.votes.down + 1
   }
-
 
   $scope.submitForm= function () {
     var form = {}
