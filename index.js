@@ -1,12 +1,14 @@
 var app = angular.module('mike', []);
 
 app.controller('MyController', function ($scope) {
-
   $scope.forms = [];
   $scope.showMe = false
   $scope.upvotes = 0;
   $scope.downvotes = 0;
-  $scope.sorter = null;
+  $scope.sorter = '-votes.up';
+  var vm = this;
+  vm.time = new Date()
+  
 
 
   $scope.toggleShow = function () {

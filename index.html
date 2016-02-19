@@ -6,9 +6,11 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="style.css" media="screen" title="no title" charset="utf-8">
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.5.0-rc.2/angular.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/moment.js/2.9.0/moment.min.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/angular-moment/0.9.0/angular-moment.min.js"></script>
     <script type="text/javascript" src="index.js"></script>
   </head>
-  <body ng-controller='MyController'>
+  <body ng-controller='MyController as main'>
     <header class="header">
         <h3>Reddit Clone</h3>
         <button type="button" ng-click="toggleShow()">Submit Post</button>
@@ -17,11 +19,12 @@
           <label for="sorter"> Sort By... </label>
           <select class="sorter" name="sorter" ng-model="sorter">
             <option ng-selected="true" value="-votes.up">Votes</option>
-            <option value="-date">Date</option>
-            <option value="-title">Title</option>
+            <option value="date">Date</option>
+            <option value="title">Title</option>
           </select>
         </form>
-        <h1>here {{sorter}}</h1>
+        <h1>here {{sorter}} {{main.time}}</h1>
+        <h1>{{time}}</h1>
     </header>
 
     <main>
