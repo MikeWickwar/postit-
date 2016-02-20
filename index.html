@@ -78,7 +78,7 @@
                   <a ng-click="downVote(post)">
                     <i class="fa fa-arrow-down fa-2x"></i>
                   </a>
-                  {{post.votes}}
+                  <span id='vote_color'>{{post.votes}}</span>
                 </p>
               </div>
             <h4>{{post.author}}</h4>
@@ -87,7 +87,7 @@
             </p>
             <div class="posts col-lg-10">
               <div class="">
-                posted at
+                posted
                 <time am-time-ago="post.time" title="{{ post.time | amDateFormat: 'dddd, MMMM Do YYYY, h:mm a' }}"></time>
               </div>
               <div class="">

@@ -23,9 +23,23 @@ app.controller('MyController', function ($scope) {
   }
   $scope.upVote = function (post) {
     post.votes = post.votes + 1
+    var votenum = document.getElementById('vote_color');
+    console.log(votenum.innerHTML);
+    if (post.votes === 0) {
+      votenum.style.color = "black";
+    }else if (post.votes > 0) {
+      votenum.style.color = "pink";
+    }
   }
   $scope.downVote = function (post) {
     post.votes = post.votes - 1
+    var votenum = document.getElementById('vote_color');
+    console.log(votenum.innerHTML);
+    if (post.votes === 0) {
+      votenum.style.color = "black";
+    }else if (post.votes < 0) {
+      votenum.style.color = "red";
+    }
   }
   $scope.sortby = function (value) {
     $scope.sorter = value;
