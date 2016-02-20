@@ -64,54 +64,59 @@
     </mainform>
     <main class="main">
       <div class="postdiv col-lg-10" ng-repeat = 'post in forms | filter:searchable | orderBy:sorter.value' >
-        <p class="post">
-          <img src={{post.img_url}} alt="" class="img"/>
-          <h2>{{post.title}}</h2>
-            <p class="votes">
-              <a ng-click="upVote(post)">
-                <i class="fa fa-arrow-up"></i>
-              </a>
-              <a ng-click="downVote(post)">
-                <i class="fa fa-arrow-down"></i>
-              </a>
-              {{post.votes}}
-            </p>
-          <h4>{{post.author}}</h4>
-          <p>
-            {{post.description}}
-          </p>
-          <p>
-          <div class="posts col-lg-10">
-            <div class="">
-              posted at
-              <time am-time-ago="post.time" title="{{ post.time | amDateFormat: 'dddd, MMMM Do YYYY, h:mm a' }}"></time>
-            </div>
-            <div class="">
-              <a ng-click="toggleCommentShow()">see comments</a>
-              <div ng-repeat = 'comment in post.comments' ng-show='showComment'>
-                <p>
-                  Comment: {{comment.comment}}
-                  By: {{comment.commentAuthor}}
+        <div class="post">
+          <div class="imgleftpost">
+            <img src={{post.img_url}} alt="" class="img"/>
+          </div>
+          <div class="rightpost">
+            <div class="titleVotes">
+              <h2>{{post.title}} | </h2>
+                <p class="votes">
+                  <a ng-click="upVote(post)">
+                    <i class="fa fa-arrow-up fa-2x"></i>
+                  </a>
+                  <a ng-click="downVote(post)">
+                    <i class="fa fa-arrow-down fa-2x"></i>
+                  </a>
+                  {{post.votes}}
                 </p>
+              </div>
+            <h4>{{post.author}}</h4>
+            <p>
+              {{post.description}}
+            </p>
+            <div class="posts col-lg-10">
+              <div class="">
+                posted at
+                <time am-time-ago="post.time" title="{{ post.time | amDateFormat: 'dddd, MMMM Do YYYY, h:mm a' }}"></time>
+              </div>
+              <div class="">
+                <a ng-click="toggleCommentShow()">see comments</a>
+                <div ng-repeat = 'comment in post.comments' ng-show='showComment'>
+                  <p>
+                    Comment: {{comment.comment}}
+                    By: {{comment.commentAuthor}}
+                  </p>
+                </div>
+              </div>
             </div>
-            <div class="">
-              comment
-              <button type="button" ng-click="toggleCommentFormShow()">Write Comment</button>
-              <form name='main.newCommentForm' ng-show='showFormComment' class="ng-hide" ng-submit="submitCommentForm(post)">
-                <input type="text" name="commentAuthor" ng-model="commentAuthor" placeholder="Author" ng-maxlength="30" required>
-                  <div ng-messages="main.newCommentForm.commentAuthor.$error">
-                    <div class="errMsg" ng-message="required">*</div>
-                    <div class="errMsg" ng-message="maxlength">Message must not exceed 30 characters</div>
-                  </div>
-                <input type="text" name="comment" ng-model="comment" placeholder="comment" ng-maxlength="150" required>
-                  <div ng-messages="main.newCommentForm.comment.$error">
-                    <div class="errMsg" ng-message="required">*</div>
-                    <div class="errMsg" ng-message="maxlength">Message must not exceed 150 characters</div>
-                  </div>
-                <button type="submit" ng-click="toggleCommentShow()">post it!</button>
-            </div>
-          </p>
-        </p>
+          </div>
+        <div class="commentdiv">
+          <button type="button" ng-click="toggleCommentFormShow()">Write Comment</button>
+          <form name='main.newCommentForm' ng-show='showFormComment' class="ng-hide" ng-submit="submitCommentForm(post)">
+            <input type="text" name="commentAuthor" ng-model="commentAuthor" placeholder="Author" ng-maxlength="30" required>
+              <div ng-messages="main.newCommentForm.commentAuthor.$error">
+                <div class="errMsg" ng-message="required">*</div>
+                <div class="errMsg" ng-message="maxlength">Message must not exceed 30 characters</div>
+              </div>
+            <input type="text" name="comment" ng-model="comment" placeholder="comment" ng-maxlength="150" required>
+              <div ng-messages="main.newCommentForm.comment.$error">
+                <div class="errMsg" ng-message="required">*</div>
+                <div class="errMsg" ng-message="maxlength">Message must not exceed 150 characters</div>
+              </div>
+            <button type="submit" ng-click="toggleCommentShow()">post it!</button>
+        </div>
+      </div>
       </div>
     </div>
     </main>

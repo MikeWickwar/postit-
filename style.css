@@ -3,6 +3,9 @@
   flex-direction: column;
   justify-content: center;
 }
+i{
+  color: black;
+}
 body{
   display:flex;
   justify-content: center;
@@ -29,13 +32,35 @@ body{
   height: 180px;
   width: 300px;
 }
+.titleVotes{
+  display: flex;
+  flex-direction: row;
+}
+.votes{
+  text-decoration: none;
+  color: black;
+  margin-top: 5%;
+}
+.rightpost{
+  display: flex;
+  flex-direction: column;
+}
+.post{
+  display: flex;
+  flex-direction: row;
+}
 .postdiv{
   display: flex;
+  flex-direction: column;
   align-self: center;
   background: #f8f8f8;
   border: 1px solid black;
   padding: 5px;
   margin: 1%;
+}
+.commentdiv{
+  padding-top: 14%;
+
 }
 .errMsg{
   color: red;
