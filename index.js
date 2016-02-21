@@ -24,8 +24,8 @@ app.controller('MyController', function ($scope) {
   }
   $scope.upVote = function (post) {
     post.votes = post.votes + 1
-    var votenum = document.getElementById('vote_color');
-    console.log(post.votes);
+    var votenum = document.getElementById('vote_color'+post.index);
+    console.log(post.index);
     if (post.votes === 0) {
       votenum.style.color = "black";
     }else if (post.votes > 0) {
@@ -34,7 +34,7 @@ app.controller('MyController', function ($scope) {
   }
   $scope.downVote = function (post) {
     post.votes = post.votes - 1
-    var votenum = document.getElementById('vote_color');
+    var votenum = document.getElementById('vote_color'+post.index);
     console.log(post.votes);
     if (post.votes === 0) {
       votenum.style.color = "black";

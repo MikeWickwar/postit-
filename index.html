@@ -64,7 +64,7 @@
     </mainform>
     <main class="main">
       <div class="postdiv col-lg-10" ng-repeat = 'post in forms | filter:searchable | orderBy:sorter.value' >
-        <div class="post{{post.index}}">
+        <div class="post{{post.index}} post">
           <div class="imgleftpost">
             <img src={{post.img_url}} alt="" class="img"/>
           </div>
@@ -78,7 +78,7 @@
                   <a ng-click="downVote(post)">
                     <i class="fa fa-arrow-down fa-2x"></i>
                   </a>
-                  <span id='vote_color'>{{post.votes}}</span>
+                  <span id='vote_color{{post.index}}'>{{post.votes}}</span>
                 </p>
               </div>
             <h4>{{post.author}}</h4>
