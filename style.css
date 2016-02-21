@@ -39,7 +39,7 @@ body{
 .votes{
   text-decoration: none;
   color: black;
-  margin-top: 5%;
+  margin-top: 10%;
 }
 .rightpost{
   display: flex;
@@ -58,9 +58,11 @@ body{
   padding: 5px;
   margin: 1%;
 }
+#vote_color{
+  font-size: 20px;
+}
 .commentdiv{
   padding-top: 14%;
-
 }
 .errMsg{
   color: red;

@@ -24,17 +24,17 @@ app.controller('MyController', function ($scope) {
   $scope.upVote = function (post) {
     post.votes = post.votes + 1
     var votenum = document.getElementById('vote_color');
-    console.log(votenum.innerHTML);
+    console.log(post.votes);
     if (post.votes === 0) {
       votenum.style.color = "black";
     }else if (post.votes > 0) {
-      votenum.style.color = "pink";
+      votenum.style.color = "green";
     }
   }
   $scope.downVote = function (post) {
     post.votes = post.votes - 1
     var votenum = document.getElementById('vote_color');
-    console.log(votenum.innerHTML);
+    console.log(post.votes);
     if (post.votes === 0) {
       votenum.style.color = "black";
     }else if (post.votes < 0) {
