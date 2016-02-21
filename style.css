@@ -54,7 +54,7 @@ body{
   display: flex;
   flex-direction: column;
   margin-left: 3%;
-  height:40vh;
+  height:25vh;
   width: 100%;
 }
 .post{
@@ -87,10 +87,25 @@ body{
   margin-top: -5%;
   margin-bottom: 2%;
 }
+.description{
+  height: 7vh;
+  overflow: auto;
+}
 .errMsg{
   color: red;
 }
 .mainform{
   display: flex;
   justify-content: center;
+}
+.indicomment{
+  border: 1px
+}
+.ng-enter {
+  -webkit-transition: 1s;
+  transition: 1s;
+  opacity: 0;
+}
+.ng-enter-active {
+  opacity: 1;
 }

@@ -7,6 +7,7 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
     <link rel="stylesheet" href="style.css" media="screen" title="no title" charset="utf-8">
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.5.0-rc.2/angular.js"></script>
+    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.0-rc.2/angular-animate.js"></script>
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/angular-messages/1.5.0/angular-messages.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.9.0/moment.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/angular-moment/1.0.0-beta.4/angular-moment.min.js"></script>
@@ -47,10 +48,10 @@
               <div class="errMsg" ng-message="maxlength">Message must not exceed 30 characters</div>
             </div>
           <h5>Image Url</h5>
-          <input class="form-control" type="text" name="img_url" ng-model="img_url" placeholder="Imgage url" ng-maxlength="40" required>
+          <input class="form-control" type="text" name="img_url" ng-model="img_url" placeholder="Imgage url" ng-maxlength="400" required>
             <div ng-messages="newPostForm.img_url.$error">
               <div class="errMsg" ng-message="required">*</div>
-              <div class="errMsg" ng-message="maxlength">Message must not exceed 400 characters</div>
+              <div class="errMsg" ng-message="maxlength">Link must not exceed 400 characters</div>
             </div>
           <h5>Description</h5>
           <input class="form-control" type="text" name="description" ng-model="description" placeholder="Description" ng-maxlength="500" required>
@@ -88,9 +89,11 @@
               <div class="postauthor">
                 <h4 class=''>By {{post.author}}</h4>
               </div>
-            <p>
-              {{post.description}}
-            </p>
+            <div class="description">
+              <p>
+                {{post.description}}
+              </p>
+            </div>
           </div>
         </div>
         <div class="commentdiv">
@@ -113,24 +116,26 @@
         <div class="commentform">
           <form name='main.newCommentForm' ng-show='post.toggler' class="ng-hide" ng-submit="submitCommentForm(post)">
             <div class="form-group">
-              <input class="form-control" type="text" name="commentAuthor" ng-model="commentAuthor" placeholder="Author" ng-maxlength="30" required>
-              <div ng-messages="main.newCommentForm.commentAuthor.$error">
-                <div class="errMsg" ng-message="required">*</div>
-                <div class="errMsg" ng-message="maxlength">Message must not exceed 30 characters</div>
-              </div>
               <input class="form-control" type="text" name="comment" ng-model="comment" placeholder="comment" ng-maxlength="150" required>
               <div ng-messages="main.newCommentForm.comment.$error">
                 <div class="errMsg" ng-message="required">*</div>
                 <div class="errMsg" ng-message="maxlength">Message must not exceed 150 characters</div>
               </div>
+              <input class="form-control" type="text" name="commentAuthor" ng-model="commentAuthor" placeholder="Author" ng-maxlength="30" required>
+              <div ng-messages="main.newCommentForm.commentAuthor.$error">
+                <div class="errMsg" ng-message="required">*</div>
+                <div class="errMsg" ng-message="maxlength">Message must not exceed 30 characters</div>
+              </div>
               <button type="submit">post it!</button>
             </div>
           </div>
         <div ng-repeat = 'comment in post.comments' ng-show='post.commentToggler'>
-          <p>
-            Comment: {{comment.comment}}
-            By: {{comment.commentAuthor}}
-          </p>
+          <div class="indicomment">
+            <p>
+              Comment: {{comment.comment}}
+              By: {{comment.commentAuthor}}
+            </p>
+          </div>
         </div>
       </div>
     </div>
