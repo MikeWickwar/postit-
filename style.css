@@ -39,15 +39,23 @@ body{
 .votes{
   text-decoration: none;
   color: black;
-  margin-top: 10%;
+  margin-top: 3%;
+  display: flex;
+  justify-content: space-between;
+  flex-direction: row;
+  width: 5vw;
 }
 .rightpost{
   display: flex;
   flex-direction: column;
+  margin-left: 3%;
+  height:40vh;
+  width: 100%;
 }
 .post{
   display: flex;
   flex-direction: row;
+  padding: 3%;
 }
 .postdiv{
   display: flex;
@@ -56,13 +64,18 @@ body{
   background: #f8f8f8;
   border: 1px solid black;
   padding: 5px;
-  margin: 1%;
+  margin: 3%;
+}
+.postauthor{
+  display: flex;
+  justify-content: flex-end;
 }
 #vote_color{
   font-size: 20px;
 }
 .commentdiv{
-  padding-top: 14%;
+  display: flex;
+  flex-direction: row;
 }
 .errMsg{
   color: red;

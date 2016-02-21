@@ -78,31 +78,33 @@
                   <a ng-click="downVote(post)">
                     <i class="fa fa-arrow-down fa-2x"></i>
                   </a>
-                  <span id='vote_color{{post.index}}'>{{post.votes}}</span>
+                  <span><h2 id='vote_color{{post.index}}'>{{post.votes}}</h2></span>
                 </p>
               </div>
-            <h4>{{post.author}}</h4>
+              <div class="postauthor">
+                <h4 class=''>By {{post.author}}</h4>
+              </div>
             <p>
               {{post.description}}
             </p>
-            <div class="posts col-lg-10">
-              <div class="">
-                posted
-                <time am-time-ago="post.time" title="{{ post.time | amDateFormat: 'dddd, MMMM Do YYYY, h:mm a' }}"></time>
-              </div>
-              <div class="">
-                <a ng-click="toggleCommentShow(post)">see comments</a>
-                <div ng-repeat = 'comment in post.comments' ng-show='post.commentToggler'>
-                  <p>
-                    Comment: {{comment.comment}}
-                    By: {{comment.commentAuthor}}
-                  </p>
-                </div>
-              </div>
+          </div>
+        </div>
+        <div class="commentdiv">
+          <div class="posted at">
+            posted
+            <time am-time-ago="post.time" title="{{ post.time | amDateFormat: 'dddd, MMMM Do YYYY, h:mm a' }}"></time>
+            |
+          </div>
+          <div class="seeComments">
+            <a ng-click="toggleCommentShow(post)">see comments  |</a>
+            <div ng-repeat = 'comment in post.comments' ng-show='post.commentToggler'>
+              <p>
+                Comment: {{comment.comment}}
+                By: {{comment.commentAuthor}}
+              </p>
             </div>
           </div>
-        <div class="commentdiv">
-          <button type="button" ng-click="toggleCommentFormShow(post)">Write Comment</button>
+          <a ng-click="toggleCommentFormShow(post)">  Write Comment</a>
           <form name='main.newCommentForm' ng-show='post.toggler' class="ng-hide" ng-submit="submitCommentForm(post)">
             <input type="text" name="commentAuthor" ng-model="commentAuthor" placeholder="Author" ng-maxlength="30" required>
               <div ng-messages="main.newCommentForm.commentAuthor.$error">
@@ -116,7 +118,6 @@
               </div>
             <button type="submit" ng-click="toggleCommentShow(post)">post it!</button>
         </div>
-      </div>
       </div>
     </div>
     </main>
