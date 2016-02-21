@@ -11,6 +11,7 @@ app.controller('MyController', function ($scope) {
                    title : 'Votes'};
   var vm = this;
   vm.time = new Date()
+  $scope.index = 0;
 
   $scope.toggleShow = function () {
     $scope.showMe = !$scope.showMe
@@ -54,9 +55,10 @@ app.controller('MyController', function ($scope) {
     form.votes = 0;
     form.comments = [];
     form.time = new Date()
+    form.index = $scope.index++;
 
     $scope.forms.push(form);
-
+      console.log(form);
     $scope.title = null;
     $scope.author = null;
     $scope.img_url = null;

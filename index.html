@@ -64,7 +64,7 @@
     </mainform>
     <main class="main">
       <div class="postdiv col-lg-10" ng-repeat = 'post in forms | filter:searchable | orderBy:sorter.value' >
-        <div class="post">
+        <div class="post{{post.index}}">
           <div class="imgleftpost">
             <img src={{post.img_url}} alt="" class="img"/>
           </div>
