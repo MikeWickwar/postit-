@@ -57,6 +57,7 @@ app.controller('MyController', function ($scope) {
     form.description = $scope.description;
     form.votes = 0;
     form.comments = [];
+    form.numOfComments = 0;
     form.time = new Date()
     form.index = $scope.index++;
     form.toggler = false;
@@ -70,7 +71,10 @@ app.controller('MyController', function ($scope) {
   }
 
   $scope.submitCommentForm= function (post) {
+    console.log(post.numOfComments);
     var newComment = {}
+    post.numOfComments = post.numOfComments + 1;
+    console.log(post.numOfComments);
     var comment = (document).getElementById('cFormComment')
     var author = (document).getElementById('cFormAuthor')
     newComment.commentAuthor = $scope.main.newCommentForm.commentAuthor.$viewValue;
@@ -83,9 +87,9 @@ app.controller('MyController', function ($scope) {
 
   singlePlural = function (post) {
     if (post.comments.length === 1) {
-      post.singlePlural = "Show Comment"
+      post.singlePlural = "Show "+post.numOfComments+" Comment"
       }else {
-      post.singlePlural = "Show Comments"
+      post.singlePlural = "Show "+post.numOfComments+" Comments"
       }
     }
 })

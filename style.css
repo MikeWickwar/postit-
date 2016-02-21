@@ -34,7 +34,7 @@ body{
 }
 .img{
   height: 180px;
-  width: 300px;
+  width: 180px;
 }
 .titleVotes{
   display: flex;
@@ -83,7 +83,7 @@ body{
   flex-direction: row;
   width:50%;
   justify-content: space-around;
-  margin-left:30%;
+  margin-left:20%;
   margin-top: -5%;
   margin-bottom: 2%;
 }
