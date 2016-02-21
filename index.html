@@ -97,26 +97,30 @@
           </div>
           <div class="seeComments">
             <a ng-click="toggleCommentShow(post)">see comments  |</a>
-            <div ng-repeat = 'comment in post.comments' ng-show='post.commentToggler'>
-              <p>
-                Comment: {{comment.comment}}
-                By: {{comment.commentAuthor}}
-              </p>
-            </div>
           </div>
           <a ng-click="toggleCommentFormShow(post)">  Write Comment</a>
+        </div>
+        <div class="commentform">
           <form name='main.newCommentForm' ng-show='post.toggler' class="ng-hide" ng-submit="submitCommentForm(post)">
-            <input type="text" name="commentAuthor" ng-model="commentAuthor" placeholder="Author" ng-maxlength="30" required>
+            <div class="form-group">
+              <input class="form-control" type="text" name="commentAuthor" ng-model="commentAuthor" placeholder="Author" ng-maxlength="30" required>
               <div ng-messages="main.newCommentForm.commentAuthor.$error">
                 <div class="errMsg" ng-message="required">*</div>
                 <div class="errMsg" ng-message="maxlength">Message must not exceed 30 characters</div>
               </div>
-            <input type="text" name="comment" ng-model="comment" placeholder="comment" ng-maxlength="150" required>
+              <input class="form-control" type="text" name="comment" ng-model="comment" placeholder="comment" ng-maxlength="150" required>
               <div ng-messages="main.newCommentForm.comment.$error">
                 <div class="errMsg" ng-message="required">*</div>
                 <div class="errMsg" ng-message="maxlength">Message must not exceed 150 characters</div>
               </div>
-            <button type="submit" ng-click="toggleCommentShow(post)">post it!</button>
+              <button type="submit" ng-click="toggleCommentShow(post)">post it!</button>
+            </div>
+          <div ng-repeat = 'comment in post.comments' ng-show='post.commentToggler'>
+            <p>
+              Comment: {{comment.comment}}
+              By: {{comment.commentAuthor}}
+            </p>
+          </div>
         </div>
       </div>
     </div>
