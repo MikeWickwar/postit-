@@ -69,26 +69,29 @@ app.controller('MyController', function ($scope) {
     $scope.img_url = null;
     $scope.description = null;
   }
-
+//when submiting a new comment the post it button from any post takes the
+//value of the last post comment.
   $scope.submitCommentForm= function (post) {
-    console.log(post.numOfComments);
     var newComment = {}
-    post.numOfComments = post.numOfComments + 1;
+    post.numOfComments += 1;
     console.log(post.numOfComments);
-    var comment = (document).getElementById('cFormComment')
-    var author = (document).getElementById('cFormAuthor')
-    newComment.commentAuthor = $scope.main.newCommentForm.commentAuthor.$viewValue;
-    newComment.comment = $scope.main.newCommentForm.comment.$viewValue;
+    console.log(post.index);
+    var comment = (document).getElementById('cFormComment'+post.index).value
+    var author = (document).getElementById('cFormAuthor'+post.index).value
+    console.log(comment, author);
+    newComment.commentAuthor = author
+    newComment.comment = comment
     post.comments.push(newComment)
     singlePlural(post)
+    // console.log(post.comments);
     comment.value = null;
-    author.value = null;
+    author.value  = null;
   }
 
   singlePlural = function (post) {
     if (post.comments.length === 1) {
       post.singlePlural = "Show "+post.numOfComments+" Comment"
-      }else {
+      } else {
       post.singlePlural = "Show "+post.numOfComments+" Comments"
       }
     }
