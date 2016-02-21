@@ -109,3 +109,11 @@ body{
 .ng-enter-active {
   opacity: 1;
 }
+.indicomment{
+  margin-left: 5%;
+  display: flex;
+}
+.commentAuthor{
+  margin: 0;
+  padding: 0;
+}

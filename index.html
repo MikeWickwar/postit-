@@ -126,14 +126,14 @@
                 <div class="errMsg" ng-message="required">*</div>
                 <div class="errMsg" ng-message="maxlength">Message must not exceed 30 characters</div>
               </div>
-              <button type="submit">post it!</button>
+              <button type="submit" ng-click="showComment(post)">post it!</button>
             </div>
           </div>
         <div ng-repeat = 'comment in post.comments' ng-show='post.commentToggler'>
           <div class="indicomment">
             <p>
-              Comment: {{comment.comment}}
-              By: {{comment.commentAuthor}}
+              <h4 class="commentAuthor">{{comment.commentAuthor}} - </h4>
+              <p>{{comment.comment}}</p>
             </p>
           </div>
         </div>
