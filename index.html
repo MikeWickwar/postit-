@@ -114,15 +114,15 @@
           <a ng-click="toggleCommentFormShow(post)"><i class="fa fa-pencil"></i>  Write Comment</a>
         </div>
         <div class="commentform">
-          <form name='main.newCommentForm{{post.index}}' ng-show='post.toggler' class="ng-hide" ng-submit="submitCommentForm(post)">
+          <form name='main.newCommentForm' ng-show='post.toggler' class="ng-hide" ng-submit="submitCommentForm(post)">
             <div class="form-group">
               <input id="cFormComment{{post.index}}" class="form-control" type="text" name="comment" ng-model="comment" placeholder="comment" ng-maxlength="150" required>
-              <div ng-messages="main.newCommentForm"+{{post.index}}+".comment.$error">
+              <div ng-messages="main.newCommentForm.comment.$error">
                 <div class="errMsg" ng-message="required">Please enter a comment...</div>
                 <div class="errMsg" ng-message="maxlength">Message must not exceed 150 characters</div>
               </div>
               <input id="cFormAuthor{{post.index}}" class="form-control" type="text" name="commentAuthor" ng-model="commentAuthor" placeholder="Author" ng-maxlength="30" required>
-              <div ng-messages="main.newCommentForm"+{{post.index}}+".commentAuthor.$error">
+              <div ng-messages="main.newCommentForm.commentAuthor.$error">
                 <div class="errMsg" ng-message="required">Please enter your name...</div>
                 <div class="errMsg" ng-message="maxlength">Message must not exceed 30 characters</div>
               </div>

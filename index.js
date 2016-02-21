@@ -69,23 +69,19 @@ app.controller('MyController', function ($scope) {
     $scope.img_url = null;
     $scope.description = null;
   }
-//when submiting a new comment the post it button from any post takes the
-//value of the last post comment.
   $scope.submitCommentForm= function (post) {
     var newComment = {}
     post.numOfComments += 1;
-    console.log(post.numOfComments);
-    console.log(post.index);
-    var comment = (document).getElementById('cFormComment'+post.index).value
-    var author = (document).getElementById('cFormAuthor'+post.index).value
-    console.log(comment, author);
-    newComment.commentAuthor = author
-    newComment.comment = comment
+    var comment = (document).getElementById('cFormComment'+post.index)
+    var author = (document).getElementById('cFormAuthor'+post.index)
+    newComment.commentAuthor = author.value
+    newComment.comment = comment.value
     post.comments.push(newComment)
     singlePlural(post)
-    // console.log(post.comments);
+    console.log(comment, author);
+    author.value = null;
     comment.value = null;
-    author.value  = null;
+    $
   }
 
   singlePlural = function (post) {
