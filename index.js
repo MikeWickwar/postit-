@@ -19,8 +19,9 @@ app.controller('MyController', function ($scope) {
   $scope.toggleCommentShow = function () {
     $scope.showComment = !$scope.showComment
   }
-  $scope.toggleCommentFormShow = function () {
-    $scope.showFormComment = !$scope.showFormComment
+  $scope.toggleCommentFormShow = function (post) {
+    post.toggler = !post.toggler
+    console.log('here' + post.toggler);
   }
   $scope.upVote = function (post) {
     post.votes = post.votes + 1
@@ -56,9 +57,9 @@ app.controller('MyController', function ($scope) {
     form.comments = [];
     form.time = new Date()
     form.index = $scope.index++;
+    form.toggler = false;
 
     $scope.forms.push(form);
-      console.log(form);
     $scope.title = null;
     $scope.author = null;
     $scope.img_url = null;
