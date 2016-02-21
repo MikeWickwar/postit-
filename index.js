@@ -16,12 +16,12 @@ app.controller('MyController', function ($scope) {
   $scope.toggleShow = function () {
     $scope.showMe = !$scope.showMe
   }
-  $scope.toggleCommentShow = function () {
-    $scope.showComment = !$scope.showComment
+  $scope.toggleCommentShow = function (post) {
+    console.log(post);
+    post.commentToggler = !post.commentToggler
   }
   $scope.toggleCommentFormShow = function (post) {
     post.toggler = !post.toggler
-    console.log('here' + post.toggler);
   }
   $scope.upVote = function (post) {
     post.votes = post.votes + 1
@@ -58,7 +58,7 @@ app.controller('MyController', function ($scope) {
     form.time = new Date()
     form.index = $scope.index++;
     form.toggler = false;
-
+    form.commentToggler = false;
     $scope.forms.push(form);
     $scope.title = null;
     $scope.author = null;
@@ -73,6 +73,5 @@ app.controller('MyController', function ($scope) {
     post.comments.push(newComment)
     // $scope.main.newCommentForm.comment.$rawModelValue = null;
     // $scope.main.newCommentForm.commentAuthor.$rawModelValue = null;
-    console.log($scope);
   }
 })
