@@ -17,7 +17,6 @@ app.controller('MyController', function ($scope) {
     $scope.showMe = !$scope.showMe
   }
   $scope.toggleCommentShow = function (post) {
-    console.log(post);
     post.commentToggler = !post.commentToggler
   }
   $scope.toggleCommentFormShow = function (post) {
