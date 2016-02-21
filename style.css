@@ -106,6 +106,14 @@ body{
 .ng-enter-active {
   opacity: 1;
 }
+.ng-leave {
+  -webkit-transition: 1s;
+  transition: 1s;
+  opacity: 1;
+}
+.ng-leave-active {
+  opacity: 0;
+}
 .indicomment{
   margin-left: 5%;
   display: flex;
