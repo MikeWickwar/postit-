@@ -91,9 +91,6 @@ body{
   height: 7vh;
   overflow: auto;
 }
-.errMsg{
-  color: red;
-}
 .mainform{
   display: flex;
   justify-content: center;

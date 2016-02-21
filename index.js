@@ -61,7 +61,7 @@ app.controller('MyController', function ($scope) {
     form.index = $scope.index++;
     form.toggler = false;
     form.commentToggler = false;
-    form.singlePlural = "comments"
+    form.singlePlural = "No Comments to Show"
     $scope.forms.push(form);
     $scope.title = null;
     $scope.author = null;
@@ -71,21 +71,21 @@ app.controller('MyController', function ($scope) {
 
   $scope.submitCommentForm= function (post) {
     var newComment = {}
+    var comment = (document).getElementById('cFormComment')
+    var author = (document).getElementById('cFormAuthor')
     newComment.commentAuthor = $scope.main.newCommentForm.commentAuthor.$viewValue;
     newComment.comment = $scope.main.newCommentForm.comment.$viewValue;
     post.comments.push(newComment)
     singlePlural(post)
-    // $scope.main.newCommentForm.comment.$rawModelValue = null;
-    // $scope.main.newCommentForm.commentAuthor.$rawModelValue = null;
+    comment.value = null;
+    author.value = null;
   }
 
   singlePlural = function (post) {
-    if (post.comments.length === 0) {
-      post.singlePlural = "Comments"
-    }else if (post.comments.length === 1) {
-      post.singlePlural = "Comment"
-    }else {
-      post.singlePlural = "Comments"
+    if (post.comments.length === 1) {
+      post.singlePlural = "Show Comment"
+      }else {
+      post.singlePlural = "Show Comments"
+      }
     }
-  }
 })

@@ -26,9 +26,9 @@
               Sort by {{sorter.title}}
             </a>
             <ul uib-dropdown-menu role="menu" aria-labelledby="single-button">
-              <li role="menuitem"><a ng-click="sortby({value: 'votes', title: 'Votes' })" value="votes">Votes</a></li>
-              <li role="menuitem"><a ng-click="sortby({value: 'time', title: 'Time'})" value="time">Time</a></li>
-              <li role="menuitem"><a ng-click="sortby({value: 'title', title: 'Title'})" value="title">Title</a></li>
+              <li role="menuitem"><a ng-click="sortby({value: '-votes', title: 'Votes' })" value="votes">Votes</a></li>
+              <li role="menuitem"><a ng-click="sortby({value: '-time', title: 'Time'})" value="time">Time</a></li>
+              <li role="menuitem"><a ng-click="sortby({value: '-title', title: 'Title'})" value="title">Title</a></li>
             </ul>
           </div>
     </header>
@@ -36,28 +36,28 @@
       <form name='newPostForm' ng-show='showMe' class="ng-hide col-lg-10" ng-submit="submitForm()">
         <div class="form-group">
           <h5>Title</h5>
-          <input class="form-control" type="text" name="title" ng-model="title" placeholder="Title" ng-maxlength="15" required>
+          <input class="form-control" type="text" name="title" ng-model="title" placeholder="Title" ng-maxlength="70" required>
             <div ng-messages="newPostForm.title.$error">
-              <div class="errMsg" ng-message="required">*</div>
-              <div class="errMsg" ng-message="maxlength">Message must not exceed 15 characters</div>
+              <div class="errMsg" ng-message="required">Please enter a title</div>
+              <div class="errMsg" ng-message="maxlength">Message must not exceed 70 characters</div>
             </div>
           <h5>Author</h5>
           <input class="form-control" type="text" name="author" ng-model="author" placeholder="Author" ng-maxlength="30" required>
             <div ng-messages="newPostForm.author.$error">
-              <div class="errMsg" ng-message="required">*</div>
+              <div class="errMsg" ng-message="required">please enter an author...</div>
               <div class="errMsg" ng-message="maxlength">Message must not exceed 30 characters</div>
             </div>
           <h5>Image Url</h5>
-          <input class="form-control" type="text" name="img_url" ng-model="img_url" placeholder="Imgage url" ng-maxlength="400" required>
+          <input class="form-control" type="text" name="img_url" ng-model="img_url" placeholder="Image url" ng-maxlength="5000" required>
             <div ng-messages="newPostForm.img_url.$error">
-              <div class="errMsg" ng-message="required">*</div>
-              <div class="errMsg" ng-message="maxlength">Link must not exceed 400 characters</div>
+              <div class="errMsg" ng-message="required">Please enter a image link...</div>
+              <div class="errMsg" ng-message="maxlength">Link must not exceed 5000 characters</div>
             </div>
           <h5>Description</h5>
-          <input class="form-control" type="text" name="description" ng-model="description" placeholder="Description" ng-maxlength="500" required>
+          <input class="form-control" type="text" name="description" ng-model="description" placeholder="Description" ng-maxlength="5000" required>
             <div ng-messages="newPostForm.description.$error">
-              <div class="errMsg" ng-message="required">*</div>
-              <div class="errMsg" ng-message="maxlength">Description must not exceed 500 characters</div>
+              <div class="errMsg" ng-message="required">Please enter a description...</div>
+              <div class="errMsg" ng-message="maxlength">Description must not exceed 5000 characters</div>
             </div>
           <button type="submit" ng-click="toggleShow()">post it!</button>
         </div>
@@ -116,14 +116,14 @@
         <div class="commentform">
           <form name='main.newCommentForm' ng-show='post.toggler' class="ng-hide" ng-submit="submitCommentForm(post)">
             <div class="form-group">
-              <input class="form-control" type="text" name="comment" ng-model="comment" placeholder="comment" ng-maxlength="150" required>
+              <input id="cFormComment" class="form-control" type="text" name="comment" ng-model="comment" placeholder="comment" ng-maxlength="150" required>
               <div ng-messages="main.newCommentForm.comment.$error">
-                <div class="errMsg" ng-message="required">*</div>
+                <div class="errMsg" ng-message="required">Please enter a comment...</div>
                 <div class="errMsg" ng-message="maxlength">Message must not exceed 150 characters</div>
               </div>
-              <input class="form-control" type="text" name="commentAuthor" ng-model="commentAuthor" placeholder="Author" ng-maxlength="30" required>
+              <input id="cFormAuthor" class="form-control" type="text" name="commentAuthor" ng-model="commentAuthor" placeholder="Author" ng-maxlength="30" required>
               <div ng-messages="main.newCommentForm.commentAuthor.$error">
-                <div class="errMsg" ng-message="required">*</div>
+                <div class="errMsg" ng-message="required">Please enter your name...</div>
                 <div class="errMsg" ng-message="maxlength">Message must not exceed 30 characters</div>
               </div>
               <button type="submit" ng-click="showComment(post)">post it!</button>
