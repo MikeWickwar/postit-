@@ -24,6 +24,7 @@ app.controller('MyController', function ($scope) {
   }
   $scope.toggleCommentFormShow = function (post) {
     post.toggler = !post.toggler
+    console.log('here');
   }
   $scope.upVote = function (post) {
     post.votes = post.votes + 1
@@ -78,6 +79,7 @@ app.controller('MyController', function ($scope) {
     newComment.comment = comment.value
     post.comments.push(newComment)
     singlePlural(post)
+    $scope.toggleCommentFormShow(post)
     console.log(comment, author);
     author.value = null;
     comment.value = null ;
@@ -92,3 +94,6 @@ app.controller('MyController', function ($scope) {
       }
     }
 })
+
+//post hides post a comment
+//color on seach!!
