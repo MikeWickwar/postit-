@@ -80,7 +80,7 @@ app.controller('MyController', function ($scope) {
     singlePlural(post)
     console.log(comment, author);
     author.value = null;
-    comment.value = null;
+    comment.value = null ;
     $
   }
 
