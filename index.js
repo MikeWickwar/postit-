@@ -62,9 +62,9 @@ app.controller('MyController', function ($scope) {
     form.time = new Date()
     form.index = $scope.index++;
     form.toggler = false;
-    form.commentToggler = false;
     form.singlePlural = "No Comments to Show"
     $scope.forms.push(form);
+    $scope.toggleShow();
     $scope.title = null;
     $scope.author = null;
     $scope.img_url = null;
@@ -80,7 +80,6 @@ app.controller('MyController', function ($scope) {
     post.comments.push(newComment)
     singlePlural(post)
     $scope.toggleCommentFormShow(post)
-    console.log(comment, author);
     author.value = null;
     comment.value = null ;
     $
