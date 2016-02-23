@@ -75,8 +75,16 @@ body{
   display: flex;
   justify-content: flex-end;
 }
-#vote_color{
+.vote_color{
   font-size: 20px;
+}
+.vote_red{
+  font-size: 20px;
+  color: red;
+}
+.vote_green{
+  font-size: 20px;
+  color: red;
 }
 .commentdiv{
   display: flex;

@@ -83,7 +83,7 @@
                   <a ng-click="downVote(post)">
                     <i class="fa fa-arrow-down fa-2x"></i>
                   </a>
-                  <span><h2 id='vote_color{{post.index}}'>{{post.votes}}</h2></span>
+                  <span><h2 id="vote_color{{post.index}}" ng-class="voteColor(post)">{{post.votes}}</h2></span>
                 </p>
               </div>
               <div class="postauthor">

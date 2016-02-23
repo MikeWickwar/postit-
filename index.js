@@ -13,6 +13,17 @@ app.controller('MyController', function ($scope) {
   vm.time = new Date()
   $scope.index = 0;
 
+  $scope.voteColor = function (post) {
+    var votenum = document.getElementById('vote_color'+post.index);
+    console.log(votenum);
+    if (post.votes === 0) {
+      votenum.style.color = "black";
+    }else if (post.votes > 0) {
+      votenum.style.color = "green";
+    }else if (post.votes < 0) {
+      votenum.style.color = "red"
+    }
+  }
   $scope.toggleShow = function () {
     $scope.showMe = !$scope.showMe
   }
@@ -28,23 +39,11 @@ app.controller('MyController', function ($scope) {
   }
   $scope.upVote = function (post) {
     post.votes = post.votes + 1
-    var votenum = document.getElementById('vote_color'+post.index);
-    console.log(post.index);
-    if (post.votes === 0) {
-      votenum.style.color = "black";
-    }else if (post.votes > 0) {
-      votenum.style.color = "green";
-    }
+    voteColor(post);
   }
   $scope.downVote = function (post) {
     post.votes = post.votes - 1
-    var votenum = document.getElementById('vote_color'+post.index);
-    console.log(post.votes);
-    if (post.votes === 0) {
-      votenum.style.color = "black";
-    }else if (post.votes < 0) {
-      votenum.style.color = "red";
-    }
+    voteColor(post);
   }
   $scope.sortby = function (value) {
     $scope.sorter = value;
@@ -82,7 +81,7 @@ app.controller('MyController', function ($scope) {
     $scope.toggleCommentFormShow(post)
     author.value = null;
     comment.value = null ;
-    $
+
   }
 
   singlePlural = function (post) {
