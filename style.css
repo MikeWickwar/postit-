@@ -89,7 +89,7 @@ body{
 .commentdiv{
   display: flex;
   flex-direction: row;
-  width:50%;
+  width:60%;
   justify-content: space-around;
   margin-left:20%;
   margin-top: -5%;

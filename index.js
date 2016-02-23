@@ -15,7 +15,6 @@ app.controller('MyController', function ($scope) {
 
   $scope.voteColor = function (post) {
     var votenum = document.getElementById('vote_color'+post.index);
-    console.log(votenum);
     if (post.votes === 0) {
       votenum.style.color = "black";
     }else if (post.votes > 0) {
@@ -92,6 +91,3 @@ app.controller('MyController', function ($scope) {
       }
     }
 })
-
-//post hides post a comment
-//color on seach!!
