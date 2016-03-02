@@ -1,4 +1,4 @@
-app.controller('MyController', ['$scope', function ($scope) {
+app.controller('MyController', ['$scope', 'ReaditService', function ($scope, ReaditService) {
   $scope.forms = [];
   $scope.showMe = false
   $scope.showComment = false
@@ -10,6 +10,30 @@ app.controller('MyController', ['$scope', function ($scope) {
   var vm = this;
   vm.time = new Date()
   $scope.index = 0;
+
+  ReaditService.all().then(function (posts) {
+    posts.forEach(function (post) {
+      var form = {}
+      form.title = post.title;
+      form.author = post.author;
+      form.img_url = post.img_url;
+      form.description = post.description;
+      form.votes = 0;
+      form.comments = [];
+      form.numOfComments = 0;
+      form.time = new Date()
+      form.index = $scope.index++;
+      form.toggler = false;
+      form.singlePlural = "No Comments to Show"
+      $scope.forms.push(form);
+      $scope.toggleShow();
+      $scope.title = null;
+      $scope.author = null;
+      $scope.img_url = null;
+      $scope.description = null;
+    })
+      console.log(posts);
+  })
 
   $scope.voteColor = function (post) {
     var votenum = document.getElementById('vote_color'+post.index);
