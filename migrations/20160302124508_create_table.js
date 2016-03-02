@@ -6,7 +6,6 @@ exports.up = function(knex, Promise) {
     table.text('img_url');
     table.text('description');
     table.integer('votes')
-    table.integer('number_of_comments')
     table.timestamp('created_at')
   })
 };
