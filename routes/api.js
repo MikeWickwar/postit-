@@ -9,7 +9,7 @@ function Comments() {
 }
 
 router.get('/', function(req, res, next) {
-  Comments().join('readit_posts', 'readit_comments.post_id', 'readit_posts.id').then(function (posts) {
+  Posts().fullOuterJoin('readit_comments', 'readit_posts.id', 'readit_comments.post_id').then(function (posts) {
     res.json(posts);
   })
 });

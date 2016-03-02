@@ -22,11 +22,14 @@ app.controller('MyController', ['$scope', 'ReaditService', function ($scope, Rea
       form.comments = [];
       console.log(post.post_id);
       console.log(post.id);
-      if (post.post_id.value === post.id.value) {
+      if (post.post_id === post.id) {
+        var newComment = {}
         console.log('here');
-        form.comments.push(post.comment)
+        newComment.commentAuthor = post.comment_author
+        newComment.comment = post.comment
+        form.comments.push(newComment)
         form.numOfComments ++;
-        console.log(form.comments, form.numOfComments);
+        console.log(form.comments);
       }
       form.time = new Date()
       form.index = $scope.index++;

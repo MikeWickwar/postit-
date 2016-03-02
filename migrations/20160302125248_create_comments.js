@@ -3,6 +3,7 @@ exports.up = function(knex, Promise) {
     table.increments('comment_id');
     table.integer('post_id');
     table.text('comment');
+    table.string('comment_author');
   })
 };
 exports.down = function(knex, Promise) {
