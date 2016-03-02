@@ -1,6 +1,6 @@
 exports.up = function(knex, Promise) {
   return knex.schema.createTable('readit_posts', function(table) {
-    table.increments();
+    table.increments('id');
     table.string('title');
     table.string('author');
     table.text('img_url');
