@@ -1,4 +1,4 @@
-app.controller('MyController', function ($scope) {
+app.controller('MyController', ['$scope', function ($scope) {
   $scope.forms = [];
   $scope.showMe = false
   $scope.showComment = false
@@ -88,4 +88,4 @@ app.controller('MyController', function ($scope) {
       post.singlePlural = "Show "+post.numOfComments+" Comments"
       }
     }
-})
+}])
