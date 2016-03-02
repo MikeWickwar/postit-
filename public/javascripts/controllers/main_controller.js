@@ -3,8 +3,6 @@ app.controller('MyController', ['$scope', 'ReaditService', function ($scope, Rea
   $scope.showMe = false
   $scope.showComment = false
   $scope.showFormComment = false
-  $scope.upvotes = 0;
-  $scope.downvotes = 0;
   $scope.sorter = {value :'-votes',
                    title : 'Votes'};
   var vm = this;
@@ -13,14 +11,23 @@ app.controller('MyController', ['$scope', 'ReaditService', function ($scope, Rea
 
   ReaditService.all().then(function (posts) {
     posts.forEach(function (post) {
+      console.log(post);
       var form = {}
       form.title = post.title;
       form.author = post.author;
       form.img_url = post.img_url;
       form.description = post.description;
-      form.votes = 0;
-      form.comments = [];
+      form.votes = post.votes;
       form.numOfComments = 0;
+      form.comments = [];
+      console.log(post.post_id);
+      console.log(post.id);
+      if (post.post_id.value === post.id.value) {
+        console.log('here');
+        form.comments.push(post.comment)
+        form.numOfComments ++;
+        console.log(form.comments, form.numOfComments);
+      }
       form.time = new Date()
       form.index = $scope.index++;
       form.toggler = false;
@@ -32,7 +39,6 @@ app.controller('MyController', ['$scope', 'ReaditService', function ($scope, Rea
       $scope.img_url = null;
       $scope.description = null;
     })
-      console.log(posts);
   })
 
   $scope.voteColor = function (post) {
