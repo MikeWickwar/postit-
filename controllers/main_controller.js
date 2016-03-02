@@ -1,5 +1,3 @@
-var app = angular.module('mike', ['angularMoment', 'ngMessages', 'ui.bootstrap', 'ngAnimate']);
-
 app.controller('MyController', function ($scope) {
   $scope.forms = [];
   $scope.showMe = false
