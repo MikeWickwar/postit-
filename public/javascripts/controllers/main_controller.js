@@ -11,38 +11,48 @@ app.controller('MyController', ['$scope', 'ReaditService', function ($scope, Rea
 
   ReaditService.all().then(function (posts) {
     posts.forEach(function (post) {
-      console.log(post);
-      var form = {}
-      form.title = post.title;
-      form.author = post.author;
-      form.img_url = post.img_url;
-      form.description = post.description;
-      form.votes = post.votes;
-      form.numOfComments = 0;
-      form.comments = [];
-      console.log(post.post_id);
-      console.log(post.id);
-      if (post.post_id === post.id) {
-        var newComment = {}
-        console.log('here');
-        newComment.commentAuthor = post.comment_author
-        newComment.comment = post.comment
-        form.comments.push(newComment)
-        form.numOfComments ++;
-        console.log(form.comments);
-      }
-      form.time = new Date()
-      form.index = $scope.index++;
-      form.toggler = false;
-      form.singlePlural = "No Comments to Show"
-      $scope.forms.push(form);
-      $scope.toggleShow();
-      $scope.title = null;
-      $scope.author = null;
-      $scope.img_url = null;
-      $scope.description = null;
-    })
-  })
+      $scope.forms.forEach(function (form) {
+        if (form.id === post.id && post.post_id === post.id) {
+            var newComment = {}
+            console.log('here');
+            newComment.commentAuthor = post.comment_author
+            newComment.comment = post.comment
+            form.comments.push(newComment)
+            form.numOfComments ++;
+            console.log(form.comments);
+        }
+      })
+          var form = {}
+          form.id = post.id
+          form.title = post.title;
+          form.author = post.author;
+          form.img_url = post.img_url;
+          form.description = post.description;
+          form.votes = post.votes;
+          form.numOfComments = 0;
+          form.comments = [];
+          console.log(post.post_id);
+          console.log(post.id);
+          if (post.post_id === post.id) {
+            var newComment = {}
+            console.log('here');
+            newComment.commentAuthor = post.comment_author
+            newComment.comment = post.comment
+            form.comments.push(newComment)
+            form.numOfComments ++;
+            console.log(form.comments);
+          }
+          form.time = new Date()
+          form.index = $scope.index++;
+          form.toggler = false;
+          form.singlePlural = "No Comments to Show"
+          $scope.forms.push(form);
+          $scope.title = null;
+          $scope.author = null;
+          $scope.img_url = null;
+          $scope.description = null;
+        })
+      })
 
   $scope.voteColor = function (post) {
     var votenum = document.getElementById('vote_color'+post.index);
