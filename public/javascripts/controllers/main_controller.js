@@ -11,17 +11,13 @@ app.controller('MyController', ['$scope', 'ReaditService', function ($scope, Rea
 
   ReaditService.all().then(function (posts) {
     posts.forEach(function (post) {
+      console.log('this next for isnt going to run');
+      console.log('forms start with nothing nesting the new post');
+      console.log('building inside wont do it. close. reformat.');
       $scope.forms.forEach(function (form) {
-        if (form.id === post.id && post.post_id === post.id) {
-            var newComment = {}
-            console.log('here');
-            newComment.commentAuthor = post.comment_author
-            newComment.comment = post.comment
-            form.comments.push(newComment)
-            form.numOfComments ++;
-            console.log(form.comments);
-        }
-      })
+        console.log('test 1');
+        if (form.id != post.id) {
+          console.log('test 1');
           var form = {}
           form.id = post.id
           form.title = post.title;
@@ -51,8 +47,18 @@ app.controller('MyController', ['$scope', 'ReaditService', function ($scope, Rea
           $scope.author = null;
           $scope.img_url = null;
           $scope.description = null;
+        }else if (post.post_id === post.id) {
+          var newComment = {}
+          console.log('here');
+          newComment.commentAuthor = post.comment_author
+          newComment.comment = post.comment
+          form.comments.push(newComment)
+          form.numOfComments ++;
+          console.log(form.comments)
+          }
         })
       })
+    })
 
   $scope.voteColor = function (post) {
     var votenum = document.getElementById('vote_color'+post.index);
