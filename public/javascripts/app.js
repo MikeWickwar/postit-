@@ -1,5 +1,5 @@
 var app = angular.module('mike', ['angularMoment', 'ngMessages', 'ui.bootstrap', 'ngAnimate', 'ngRoute']);
- 
+
  app.config(function($routeProvider) {
      $routeProvider
        .when('/', {

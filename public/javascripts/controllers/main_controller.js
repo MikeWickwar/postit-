@@ -19,20 +19,19 @@ app.controller('MyController', ['$scope', 'ReaditService', function ($scope, Rea
           form.img_url = post.img_url;
           form.description = post.description;
           form.votes = post.votes;
+          form.singlePlural = 'No Comments To Show'
           form.numOfComments = 0;
           form.comments = [];
           comments.forEach(function (comment) {
             if (comment.post_id === post.id) {
-              form.comments.push(comment);
+              form.comments.push({comment:comment.comment, commentAuthor:comment.comment_author});
               form.numOfComments ++;
+              form.singlePlural = form.numOfComments + " Comments";
             }
           })
-          console.log(post.post_id);
-          console.log(post.id);
           form.time = new Date();
           form.index = $scope.index++;
           form.toggler = false;
-          form.singlePlural = 'No Comments To Show'
           $scope.forms.push(form);
           $scope.title = null;
           $scope.author = null;
@@ -41,54 +40,6 @@ app.controller('MyController', ['$scope', 'ReaditService', function ($scope, Rea
         })
       })
     })
-
-  // ReaditService.all().then(function (posts) {
-  //   posts.forEach(function (post, i) {
-  //       console.log(post, "opst!!!!");
-  //       console.log($scope.forms, "FOOOORM");
-  //       if ($scope.forms[i] != post) {
-  //         console.log('test 1');
-  //         var form = {}
-  //         form.id = post.id
-  //         form.title = post.title;
-  //         form.author = post.author;
-  //         form.img_url = post.img_url;
-  //         form.description = post.description;
-  //         form.votes = post.votes;
-  //         form.numOfComments = 0;
-  //         form.comments = [];
-  //         console.log(post.post_id);
-  //         console.log(post.id);
-  //         form.time = new Date()
-  //         form.index = $scope.index++;
-  //         form.toggler = false;
-  //         form.singlePlural = "No Comments to Show"
-  //         $scope.forms.push(form);
-  //         $scope.title = null;
-  //         $scope.author = null;
-  //         $scope.img_url = null;
-  //         $scope.description = null;
-  //         if (post.post_id === post.id) {
-  //           var newComment = {}
-  //           console.log('here');
-  //           newComment.commentAuthor = post.comment_author
-  //           newComment.comment = post.comment
-  //           form.comments.push(newComment)
-  //           form.numOfComments ++;
-  //           console.log(form.comments);
-  //         }
-  //       }else if (post.post_id === post.id) {
-  //         var newComment = {}
-  //         console.log('here');
-  //         newComment.commentAuthor = post.comment_author
-  //         newComment.comment = post.comment
-  //         form.comments.push(newComment)
-  //         form.numOfComments ++;
-  //         console.log(form.comments)
-  //         }
-  //
-  //     })
-  //   })
 
   $scope.voteColor = function (post) {
     var votenum = document.getElementById('vote_color'+post.index);
@@ -144,7 +95,11 @@ app.controller('MyController', ['$scope', 'ReaditService', function ($scope, Rea
     $scope.author = null;
     $scope.img_url = null;
     $scope.description = null;
+    ReaditService.addPost(form).then(function (response) {
+        console.log(response, "pooooossssttted");
+    })
   }
+
   $scope.submitCommentForm= function (post) {
     var newComment = {}
     post.numOfComments += 1;

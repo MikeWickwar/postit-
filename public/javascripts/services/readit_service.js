@@ -9,6 +9,10 @@ app.factory('ReaditService', function ($http) {
       return $http.get('/api/readit/comments').then(function (response) {
         return response.data;
       })
+    },
+    addPost: function (post) {
+      console.log('made it to service post', post);
+      return $http.post("http://localhost:3000/api/readit", post);
     }
   }
 })

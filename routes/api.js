@@ -14,6 +14,10 @@ router.get('/', function(req, res, next) {
   })
 });
 
+router.post('/', function(req, res, next) {
+  console.log('here at expres route');
+});
+
 router.get('/comments', function(req, res, next) {
   Comments().select().then(function (comments) {
     res.json(comments);
