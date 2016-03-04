@@ -12,7 +12,7 @@ app.factory('ReaditService', function ($http) {
     },
     addPost: function (post) {
       console.log('made it to service post', post);
-      return $http.post("http://localhost:3000/api/readit", post);
+      return $http.post("/api/readit", {post});
     }
   }
 })
