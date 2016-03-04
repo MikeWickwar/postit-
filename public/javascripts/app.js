@@ -1,6 +1,6 @@
 var app = angular.module('mike', ['angularMoment', 'ngMessages', 'ui.bootstrap', 'ngAnimate', 'ngRoute']);
 
- app.config(function($routeProvider) {
+ app.config(function($routeProvider, $locationProvider) {
      $routeProvider
        .when('/', {
          controller: "MyController",

@@ -5,8 +5,8 @@ exports.up = function(knex, Promise) {
     table.string('author');
     table.text('img_url');
     table.text('description');
-    table.integer('votes')
-    table.timestamp('created_at')
+    table.integer('votes');
+    table.string('time')
   })
 };
 exports.down = function(knex, Promise) {

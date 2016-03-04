@@ -8,7 +8,15 @@ function Comments() {
   return knex('readit_comments');
 }
 router.post('/', function(req, res, next) {
+  delete req.body.comments;
+  delete req.body.numOfComments;
+  delete req.body.index;
+  delete req.body.toggler;
+  delete req.body.singlePlural
   console.log('here at expres route');
+  Posts().insert(req.body).then(function (response) {
+    console.log("total success check yo db");
+  })
 });
 
 router.get('/', function(req, res, next) {

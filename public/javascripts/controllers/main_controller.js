@@ -29,7 +29,7 @@ app.controller('MyController', ['$scope', 'ReaditService', function ($scope, Rea
               form.singlePlural = form.numOfComments + " Comments";
             }
           })
-          form.time = new Date();
+          form.created_at = new Date();
           form.index = $scope.index++;
           form.toggler = false;
           $scope.forms.push(form);
