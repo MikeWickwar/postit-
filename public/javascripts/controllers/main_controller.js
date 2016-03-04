@@ -12,34 +12,27 @@ app.controller('MyController', ['$scope', 'ReaditService', function ($scope, Rea
   ReaditService.posts().then(function (posts) {
     ReaditService.comments().then(function (comments) {
       posts.forEach(function (post) {
-        var form = {};
-          form.id = post.id;
-          form.title = post.title;
-          form.author = post.author;
-          form.img_url = post.img_url;
-          form.description = post.description;
-          form.votes = post.votes;
-          form.singlePlural = 'No Comments To Show'
-          form.numOfComments = 0;
-          form.comments = [];
-          comments.forEach(function (comment) {
-            if (comment.post_id === post.id) {
-              form.comments.push({comment:comment.comment, commentAuthor:comment.comment_author});
-              form.numOfComments ++;
-              form.singlePlural = form.numOfComments + " Comments";
-            }
-          })
-          form.created_at = new Date();
-          form.index = $scope.index++;
-          form.toggler = false;
-          $scope.forms.push(form);
-          $scope.title = null;
-          $scope.author = null;
-          $scope.img_url = null;
-          $scope.description = null;
+        post.singlePlural = 'No Comments To Show'
+        post.numOfComments = 0;
+        post.comments = [];
+        comments.forEach(function (comment) {
+          if (comment.post_id === post.id) {
+            post.comments.push({comment:comment.comment, commentAuthor:comment.comment_author});
+            post.numOfComments ++;
+            post.singlePlural = post.numOfComments + " Comments";
+          }
         })
+        post.created_at = new Date();
+        post.index = $scope.index++;
+        post.toggler = false;
+        $scope.forms.push(post);
+        $scope.title = null;
+        $scope.author = null;
+        $scope.img_url = null;
+        $scope.description = null;
       })
     })
+  })
 
   $scope.voteColor = function (post) {
     var votenum = document.getElementById('vote_color'+post.index);
@@ -77,25 +70,12 @@ app.controller('MyController', ['$scope', 'ReaditService', function ($scope, Rea
   }
 
   $scope.submitForm= function () {
-    var form = {}
-    form.title = $scope.title;
-    form.author = $scope.author;
-    form.img_url = $scope.img_url;
-    form.description = $scope.description;
-    form.votes = 0;
-    form.comments = [];
-    form.numOfComments = 0;
-    form.time = new Date()
-    form.index = $scope.index++;
-    form.toggler = false;
-    form.singlePlural = "No Comments to Show"
-    $scope.forms.push(form);
+    $scope.post = ReaditService.buildPost($scope.post);
+    $scope.post.index = $scope.index++;
+    $scope.forms.push($scope.post);
     $scope.toggleShow();
-    $scope.title = null;
-    $scope.author = null;
-    $scope.img_url = null;
-    $scope.description = null;
-    ReaditService.addPost(form).then(function (response) {
+    $scope.post = {};
+    ReaditService.addPost($scope.post).then(function (response) {
         console.log(response, "pooooossssttted");
     })
   }

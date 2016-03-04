@@ -39,25 +39,25 @@
       <form name='newPostForm' ng-show='showMe' class="ng-hide col-lg-10" ng-submit="submitForm()">
         <div class="form-group">
           <h5>Title</h5>
-          <input class="form-control" type="text" name="title" ng-model="title" placeholder="Title" ng-maxlength="70" required>
+          <input class="form-control" type="text" name="title" ng-model="post.title" placeholder="Title" ng-maxlength="70" required>
             <div ng-messages="newPostForm.title.$error">
               <div class="errMsg" ng-message="required">Please enter a title</div>
               <div class="errMsg" ng-message="maxlength">Message must not exceed 70 characters</div>
             </div>
           <h5>Author</h5>
-          <input class="form-control" type="text" name="author" ng-model="author" placeholder="Author" ng-maxlength="30" required>
+          <input class="form-control" type="text" name="author" ng-model="post.author" placeholder="Author" ng-maxlength="30" required>
             <div ng-messages="newPostForm.author.$error">
               <div class="errMsg" ng-message="required">please enter an author...</div>
               <div class="errMsg" ng-message="maxlength">Message must not exceed 30 characters</div>
             </div>
           <h5>Image Url</h5>
-          <input class="form-control" type="text" name="img_url" ng-model="img_url" placeholder="Image url" ng-maxlength="5000" required>
+          <input class="form-control" type="text" name="img_url" ng-model="post.img_url" placeholder="Image url" ng-maxlength="5000" required>
             <div ng-messages="newPostForm.img_url.$error">
               <div class="errMsg" ng-message="required">Please enter a image link...</div>
               <div class="errMsg" ng-message="maxlength">Link must not exceed 5000 characters</div>
             </div>
           <h5>Description</h5>
-          <input class="form-control" type="text" name="description" ng-model="description" placeholder="Description" ng-maxlength="5000" required>
+          <input class="form-control" type="text" name="description" ng-model="post.description" placeholder="Description" ng-maxlength="5000" required>
             <div ng-messages="newPostForm.description.$error">
               <div class="errMsg" ng-message="required">Please enter a description...</div>
               <div class="errMsg" ng-message="maxlength">Description must not exceed 5000 characters</div>
