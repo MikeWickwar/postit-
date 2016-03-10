@@ -88,6 +88,9 @@
                   </a>
                   <span><h2 id="vote_color{{post.index}}" ng-class="voteColor(post)">{{post.votes}}</h2></span>
                 </p>
+                <span>
+                  <button ng-click="deletePost(post)" type="button" class="btn">X</button>
+                </span>
               </div>
               <div class="postauthor">
                 <h4 class=''>By {{post.author}}</h4>

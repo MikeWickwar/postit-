@@ -23,6 +23,11 @@ app.factory('ReaditService', function ($http) {
       post.toggler = false;
       post.singlePlural = "No Comments to Show"
       return post;
+    },
+    deletePost: function(post){
+      console.log(post);
+      console.log('here deleteing service', post.id);
+      return $http.post("/api/readit/posts/"+post.id)
     }
   }
 })

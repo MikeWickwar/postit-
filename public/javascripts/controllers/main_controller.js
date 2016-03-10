@@ -9,30 +9,34 @@ app.controller('MyController', ['$scope', 'ReaditService', function ($scope, Rea
   vm.time = new Date()
   $scope.index = 0;
 
-  ReaditService.posts().then(function (posts) {
-    ReaditService.comments().then(function (comments) {
-      posts.forEach(function (post) {
-        post.singlePlural = 'No Comments To Show'
-        post.numOfComments = 0;
-        post.comments = [];
-        comments.forEach(function (comment) {
-          if (comment.post_id === post.id) {
-            post.comments.push({comment:comment.comment, commentAuthor:comment.comment_author});
-            post.numOfComments ++;
-            post.singlePlural = post.numOfComments + " Comments";
-          }
+  $scope.getPosts = function () {
+    ReaditService.posts().then(function (posts) {
+      ReaditService.comments().then(function (comments) {
+        posts.forEach(function (post) {
+          post.singlePlural = 'No Comments To Show'
+          post.numOfComments = 0;
+          post.comments = [];
+          comments.forEach(function (comment) {
+            if (comment.post_id === post.id) {
+              post.comments.push({comment:comment.comment, commentAuthor:comment.comment_author});
+              post.numOfComments ++;
+              post.singlePlural = post.numOfComments + " Comments";
+            }
+          })
+          post.created_at = new Date();
+          post.index = $scope.index++;
+          post.toggler = false;
+          $scope.forms.push(post);
+          $scope.title = null;
+          $scope.author = null;
+          $scope.img_url = null;
+          $scope.description = null;
         })
-        post.created_at = new Date();
-        post.index = $scope.index++;
-        post.toggler = false;
-        $scope.forms.push(post);
-        $scope.title = null;
-        $scope.author = null;
-        $scope.img_url = null;
-        $scope.description = null;
       })
     })
-  })
+  }
+
+  $scope.getPosts();
 
   $scope.voteColor = function (post) {
     var votenum = document.getElementById('vote_color'+post.index);
@@ -80,7 +84,7 @@ app.controller('MyController', ['$scope', 'ReaditService', function ($scope, Rea
     })
   }
 
-  $scope.submitCommentForm= function (post) {
+  $scope.submitCommentForm = function (post) {
     var newComment = {}
     post.numOfComments += 1;
     var comment = (document).getElementById('cFormComment'+post.index)
@@ -92,7 +96,13 @@ app.controller('MyController', ['$scope', 'ReaditService', function ($scope, Rea
     $scope.toggleCommentFormShow(post)
     author.value = null;
     comment.value = null ;
+  }
 
+  $scope.deletePost = function (post) {
+    ReaditService.deletePost(post).then(function (response) {
+      $scope.getPosts();
+      console.log('delete in controller hit after response');
+    })
   }
 
   singlePlural = function (post) {

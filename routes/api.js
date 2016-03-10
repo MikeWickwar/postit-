@@ -14,8 +14,9 @@ router.post('/', function(req, res, next) {
   delete req.body.toggler;
   delete req.body.singlePlural
   console.log('here at expres route');
-  Posts().insert(req.body).then(function (response) {
-    console.log("total success check yo db");
+  Posts().insert(req.body).returning('id').then(function (post) {
+    console.log(post, "doin it");
+    res.json(post)
   })
 });
 
@@ -29,6 +30,14 @@ router.get('/', function(req, res, next) {
 router.get('/comments', function(req, res, next) {
   Comments().select().then(function (comments) {
     res.json(comments);
+  })
+});
+
+router.post('/posts/:id', function(req, res, next) {
+  console.log('madeit');
+  console.log(req.params.id);
+  Posts().where('id', req.params.id).del().then(function () {
+    res.json('success');
   })
 });
 
