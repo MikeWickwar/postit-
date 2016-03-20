@@ -1,42 +1,15 @@
-app.controller('MyController', ['$scope', '$route', 'ReaditService', function ($scope, $route, ReaditService) {
+app.controller('MyController', function ($scope) {
   $scope.forms = [];
   $scope.showMe = false
   $scope.showComment = false
   $scope.showFormComment = false
+  $scope.upvotes = 0;
+  $scope.downvotes = 0;
   $scope.sorter = {value :'-votes',
                    title : 'Votes'};
   var vm = this;
   vm.time = new Date()
   $scope.index = 0;
-
-  $scope.getPosts = function () {
-    ReaditService.posts().then(function (posts) {
-      ReaditService.comments().then(function (comments) {
-        posts.forEach(function (post) {
-          post.singlePlural = 'No Comments To Show'
-          post.numOfComments = 0;
-          post.comments = [];
-          comments.forEach(function (comment) {
-            if (comment.post_id === post.id) {
-              post.comments.push({comment:comment.comment, commentAuthor:comment.comment_author});
-              post.numOfComments ++;
-              post.singlePlural = post.numOfComments + " Comments";
-            }
-          })
-          post.created_at = new Date();
-          post.index = $scope.index++;
-          post.toggler = false;
-          $scope.forms.push(post);
-          $scope.title = null;
-          $scope.author = null;
-          $scope.img_url = null;
-          $scope.description = null;
-        })
-      })
-    })
-  }
-
-  $scope.getPosts();
 
   $scope.voteColor = function (post) {
     var votenum = document.getElementById('vote_color'+post.index);
@@ -74,17 +47,26 @@ app.controller('MyController', ['$scope', '$route', 'ReaditService', function ($
   }
 
   $scope.submitForm= function () {
-    $scope.post = ReaditService.buildPost($scope.post);
-    $scope.post.index = $scope.index++;
-    $scope.forms.push($scope.post);
+    var form = {}
+    form.title = $scope.title;
+    form.author = $scope.author;
+    form.img_url = $scope.img_url;
+    form.description = $scope.description;
+    form.votes = 0;
+    form.comments = [];
+    form.numOfComments = 0;
+    form.time = new Date()
+    form.index = $scope.index++;
+    form.toggler = false;
+    form.singlePlural = "No Comments to Show"
+    $scope.forms.push(form);
     $scope.toggleShow();
-    $scope.post = {};
-    ReaditService.addPost($scope.post).then(function (response) {
-        console.log(response, "pooooossssttted");
-    })
+    $scope.title = null;
+    $scope.author = null;
+    $scope.img_url = null;
+    $scope.description = null;
   }
-
-  $scope.submitCommentForm = function (post) {
+  $scope.submitCommentForm= function (post) {
     var newComment = {}
     post.numOfComments += 1;
     var comment = (document).getElementById('cFormComment'+post.index)
@@ -96,12 +78,7 @@ app.controller('MyController', ['$scope', '$route', 'ReaditService', function ($
     $scope.toggleCommentFormShow(post)
     author.value = null;
     comment.value = null ;
-  }
 
-  $scope.deletePost = function (post) {
-    ReaditService.deletePost(post).then(function (response) {
-      console.log('delete in controller hit after response');
-    })
   }
 
   singlePlural = function (post) {
@@ -111,4 +88,4 @@ app.controller('MyController', ['$scope', '$route', 'ReaditService', function ($
       post.singlePlural = "Show "+post.numOfComments+" Comments"
       }
     }
-}])
+})
