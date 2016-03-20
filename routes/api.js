@@ -13,9 +13,7 @@ router.post('/', function(req, res, next) {
   delete req.body.index;
   delete req.body.toggler;
   delete req.body.singlePlural
-  console.log('here at expres route');
   Posts().insert(req.body).returning('id').then(function (post) {
-    console.log(post, "doin it");
     res.json(post)
   })
 });
